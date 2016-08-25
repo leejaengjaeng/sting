@@ -1,0 +1,27 @@
+body
+{
+	background-color:#000;
+	padding:0 !important;
+}
+
+
+#mainPageBody
+{
+	/*
+		헤더의 backgound img 가로 길이
+	*/  
+	max-width:2410px;
+	margin:auto;
+	
+	
+	background-color:#171919;	
+}
+
+
+.contentText
+{
+	text-align:center;
+	font-size:1.5em;
+	font-weight:bold;
+	color:#fff;
+}

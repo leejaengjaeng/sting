@@ -1,0 +1,119 @@
+drop table user
+create table user(
+   Uid int AUTO_INCREMENT PRIMARY KEY,
+    id varchar(50) ,
+    phonenumber varchar(50) ,
+    email varchar(50) ,
+    password varchar(50) ,
+    address1 varchar(50) ,
+    address2 varchar(50) ,
+    address3 varchar(50) ,
+    isPermit int ,
+    accountnumber varchar(50) ,
+    role varchar(50)
+);
+
+drop table company
+create table company(
+   Cid int AUTO_INCREMENT PRIMARY KEY,
+    Uid varchar(50) ,
+    registration_number varchar(50) ,
+    manager_name varchar(50) ,
+    manager_phonenumber varchar(50) ,
+    interestproduct varchar(50) ,
+    typeofcompany varchar(50) 
+);
+
+drop table management
+create table management(
+   Cid int AUTO_INCREMENT PRIMARY KEY,
+    Uid varchar(50) ,
+    registration_number varchar(50) ,
+    manager_name varchar(50) ,
+    manager_phonenumber varchar(50) 
+);
+
+drop table star
+create table star(
+   sid int AUTO_INCREMENT PRIMARY KEY,
+    uid varchar(50) ,
+    management varchar(50) ,
+    favoritem varchar(50) ,
+    SNSurl varchar(50) ,
+    type int ,
+    wage varchar(50) 
+);
+
+drop table starbody
+create table starbody(
+   Sid int ,
+    shoulderwidth double ,
+    registration_number varchar(50) ,
+    manager_name varchar(50) ,
+    manager_phonenumber varchar(50) ,
+    interestproduct varchar(50) ,
+    typeofcompany varchar(50) 
+);
+
+drop table starimage
+create table starimage(
+   siid int auto_increment primary key,
+    sid int ,
+    imageurl varchar(100)
+);
+
+drop table item
+create table item(
+   iid int auto_increment primary key,
+    category int ,
+    name varchar(50) ,
+    cost varchar(50) ,
+    cid int ,
+    sellingsiteurl varchar(50) ,
+    detailexplain text
+);
+
+drop table itemimage
+create table itemimage(
+   iiid int auto_increment primary key,
+    iid int ,
+    imageurl varchar(100)
+);
+
+drop table matching
+create table matching(
+   mid int auto_increment primary key,
+    uid int ,
+   progress int 
+);
+
+drop table notice
+create table notice(
+   nid int auto_increment primary key,
+    uid int ,
+    title varchar(50) ,
+    content text ,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Hit int 
+);
+
+drop table qna
+create table qna(
+   qid int auto_increment primary key,
+    uid int ,
+    title varchar(50),
+    content text ,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+drop table snsStar
+create table snsStar(
+    sid int AUTO_INCREMENT PRIMARY KEY,
+    Uid varchar(50) ,
+    snsName varchar(50) ,
+    snsUrl varchar(50) ,
+    numofvisitor varchar(50) ,
+    favorproduct varchar(50) ,
+    wage varchar(50) 
+);
+

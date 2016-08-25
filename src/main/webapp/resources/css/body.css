@@ -1,0 +1,30 @@
+#mainPageBody div
+{
+	padding:2% 0 2% 0;
+}
+
+#mainPageBody img
+{
+	padding-top:2%;
+	margin:auto;
+}
+
+#mainPageBody p
+{
+	border-top:1px solid #7b7a7a;
+	border-bottom:1px solid #7b7a7a;
+	color:#7b7a7a;
+	width:50%;
+	margin:auto;
+	
+	font-size:1.5em;
+	font-weight:bold;
+	text-align:center;
+}
+
+
+#mainPageBody .mainPageBtn
+{
+	display:block;
+	margin:auto;
+}
