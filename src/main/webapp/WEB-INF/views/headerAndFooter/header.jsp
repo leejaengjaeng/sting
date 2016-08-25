@@ -7,11 +7,9 @@
 
 <div id="header">
 
-	<h1>${param.auth}</h1>
-
 	<c:choose>
 		<c:when test="${param.auth == '' }">
-			i am visitor
+			<c:import url="/WEB-INF/views/headerAndFooter/mainPageHeader.jsp"/>
 		</c:when>
 		<c:when test="${param.auth == 'ROLE_ADMIN' }">
 			i am admin
@@ -29,9 +27,9 @@
 			i am management
 		</c:when>
 		<c:otherwise>
-			i am ... what?
+			<!-- indexPage -->
+			<c:import url="/WEB-INF/views/headerAndFooter/mainPageHeader.jsp"/>
 		</c:otherwise>			
 	</c:choose>	
-	<c:import url="/WEB-INF/views/headerAndFooter/mainPageHeader.jsp"/>
 		
 </div>

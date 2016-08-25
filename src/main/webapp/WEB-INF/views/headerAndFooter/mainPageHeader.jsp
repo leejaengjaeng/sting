@@ -10,12 +10,12 @@
 	</p>
 	<div id="mainPageBtnWrap">
 		<div class="col-xs-6">
-			<div style="float:right" class="mainPageBtn" onclick="window.loacation("#")>
+			<div style="float:right" class="mainPageBtn" onclick="location.href='/login'">
 					Login
 			</div>
 		</div>
 		<div class="col-xs-6">
-			<div class="mainPageBtn" onclick="window.loacation("#")>
+			<div class="mainPageBtn" onclick="")>
 					Sign Up
 			</div>
 		</div>

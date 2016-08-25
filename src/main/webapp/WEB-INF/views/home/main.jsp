@@ -23,27 +23,6 @@
 			<c:param name="auth" value="${currentUser.getRole()}"></c:param>	
 		</c:import>
 	
-		<c:choose>
-			<c:when test="${currentUser.getRole() == 'ROLE_ADMIN' }">
-				i am admin
-			</c:when>
-			<c:when test="${currentUser.getRole() == 'ROLE_STAR' }">
-				i am star
-			</c:when>
-			<c:when test="${currentUser.getRole() == 'ROLE_SNSSTAR' }">
-				i am snsStar
-			</c:when>
-			<c:when test="${currentUser.getRole() == 'ROLE_COMPANY' }">
-				i am company
-			</c:when>
-			<c:when test="${currentUser.getRole() == 'ROLE_MANAGEMENT' }">
-				i am management
-			</c:when>
-			<c:otherwise>
-				i am ... what?
-			</c:otherwise>			
-		</c:choose>	
-			
 		
 		<c:import url="../headerAndFooter/footer.jsp">
 		</c:import>

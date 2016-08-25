@@ -17,7 +17,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h1>${testAttr}</h1>
 		<c:import url="../headerAndFooter/header.jsp">
 			<c:param name="testAttr" value="${testAttr}"></c:param>	
 		</c:import>
