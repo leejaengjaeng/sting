@@ -5,6 +5,6 @@
 /.git/
 /APP_HOME_IS_UNDEFINED/
 /.settings/
-/.classpath/
-/.project/
+/.classpath
+
 
