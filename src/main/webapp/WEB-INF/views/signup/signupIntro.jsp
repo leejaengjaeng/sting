@@ -14,10 +14,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="width: 100%">
+<div style="width:100%;height:100%">
+	<div>
 		<c:import url="../headerAndFooter/checkAgreementHeader.jsp">
 			<c:param name="kindOfpage" value="agreement"></c:param>
 		</c:import>
 	</div>
+	<div style="margin-left:20%;margin-right:20%">
+		<center>
+			<div>
+				<img src="/resources/imgs/signup.png" class="img-responsive">
+			</div>
+		</center>
+	<div style="float:left;width:30%;height:30%;border:2px solid white;background-color:white">
+	<p>기업회원</p>
+	</div>
+	<div style="float:right;width:30%;height:30%;border:2px solid white;background-color:white">
+	<p>스타회원</p>
+	</div>
+	<div style="margin-top:30px;clear:both;float:left;width:30%;height:30%;border:2px solid white;background-color:white">
+	<p>매니지먼트회원</p>
+	</div>
+	<div style="margin-top:30px;float:right;width:30%;height:30%;border:2px solid white;background-color:white">
+	<p>SNS스타회원</p>
+	</div>	
+	</div>
+	
+	
+</div>
 </body>
 </html>

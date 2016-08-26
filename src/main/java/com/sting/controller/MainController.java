@@ -60,5 +60,10 @@ public class MainController {
 	public String agree(){
 		return "signup/checkagree";
 	}
+	
+	@RequestMapping("/signupintro")
+	public String goSignup(){
+		return "signup/signupIntro";
+	}
 }
 
