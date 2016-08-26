@@ -31,7 +31,7 @@ public class MainController {
 	@RequestMapping("/")
 	public String index(Model model)
 	{
-		logger.debug("aa");
+		logger.debug("jinuk");
 		return "home/index";
 		
 	}
@@ -55,6 +55,10 @@ public class MainController {
 	public String hh()
 	{
 		return "fuck";
+	}
+	@RequestMapping("/agree")
+	public String agree(){
+		return "signup/checkagree";
 	}
 }
 
