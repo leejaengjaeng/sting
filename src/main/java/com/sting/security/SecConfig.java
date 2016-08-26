@@ -20,20 +20,23 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception
 	{
 		http
-		.authorizeRequests()
-			.antMatchers("/").permitAll()
+			.authorizeRequests()
+			//.anyRequest().hasRole("ADMIN")
+			.antMatchers("/signupinput","/checkid").permitAll()
+			.antMatchers("/**","/signupinput","/checkid").permitAll()
 			.antMatchers("/admin").hasRole("ADMIN")
 			.and()
-		.formLogin()
+		/*
+			.formLogin()
 			.loginPage("/login").permitAll() 
 			.loginProcessingUrl("/login.do")
 			.usernameParameter("id")
 			.passwordParameter("password")	
 			.successForwardUrl("/loginProcess.do")
-			.and()
-		.exceptionHandling()
-			.accessDeniedPage("/")
-			.and()
+			.and()*/
+//		.exceptionHandling()
+//			.accessDeniedPage("/insert")
+//			.and()
 		.logout()
 			.logoutSuccessUrl("/");
 		//static 寃쎈줈

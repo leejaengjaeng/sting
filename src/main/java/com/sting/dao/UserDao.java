@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserDao {
 	
 	public UserVo getUserById(String id);
-	
+	public void makeuser(String id);
 }

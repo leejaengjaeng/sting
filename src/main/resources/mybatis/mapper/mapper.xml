@@ -5,4 +5,7 @@
     <select id="getUserById" parameterType="String" resultType="com.sting.vo.UserVo">
         SELECT * FROM user where id = #{id}
     </select>
+    <insert id="makeuser" parameterType="String">
+    	insert into user(id) values (#{id})
+    </insert>
 </mapper>
