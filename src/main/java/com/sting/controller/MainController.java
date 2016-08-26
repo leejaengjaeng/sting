@@ -51,5 +51,14 @@ public class MainController {
 	{
 		return "fuck";
 	}
+	@RequestMapping("/agree")
+	public String agree(){
+		return "signup/checkagree";
+	}
+	
+	@RequestMapping("/signupintro")
+	public String goSignup(){
+		return "signup/signupIntro";
+	}
 }
 
