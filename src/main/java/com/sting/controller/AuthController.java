@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,13 +30,25 @@ public class AuthController {
 	@Autowired
 	UserDao userDao;
 	
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	
 	@RequestMapping("/loginProcess.do")
 	public String loginProcess(Model model)
 	{
-		String userId = SecurityContextHolder.getContext().getAuthentication().getName();
-		UserVo currentUser = userDao.getUserById(userId);
-		model.addAttribute("currentUser", currentUser);
-		return "home/main";
+		try{
+			String userId = SecurityContextHolder.getContext().getAuthentication().getName();		
+			UserVo currentUser = userDao.getUserById(userId);
+			// 인증 정보가 없으면 userId = anonymousUser
+			// currnetUser = null
+			model.addAttribute("currentUser", currentUser);
+			return "home/index";		
+		}
+		catch(Exception e)
+		{
+			System.out.println("gi");
+			logger.info("비정상 접근입니다(/loginProcess.do): "+e.getMessage());
+			return "redirect:/";
+		}
 	}
 	
 	@RequestMapping("/logoutProcess.do")
