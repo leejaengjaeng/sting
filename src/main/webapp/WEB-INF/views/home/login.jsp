@@ -24,9 +24,7 @@
 		</c:import>
 		
 		
-		<div class="col-xs-12">
-			<img class="img-responsive" src="resources/imgs/imgText/txt_05.png">
-		</div>
+		<div class="col-xs-12">	<img class="img-responsive" src="resources/imgs/imgText/txt_05.png"></div>
 		<c:import url="../forms/loginForm.jsp">
 		</c:import>
 		

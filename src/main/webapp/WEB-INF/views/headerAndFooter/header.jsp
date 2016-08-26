@@ -8,28 +8,38 @@
 <div id="header">
 
 	<c:choose>
-		<c:when test="${param.auth == '' }">
-			<c:import url="/WEB-INF/views/headerAndFooter/mainPageHeader.jsp"/>
-		</c:when>
 		<c:when test="${param.auth == 'ROLE_ADMIN' }">
-			i am admin
+			<c:import url="/WEB-INF/views/headerAndFooter/headerContent/userHeader.jsp"/>
 		</c:when>
 		<c:when test="${param.auth == 'ROLE_STAR' }">
-			i am star
+			<h1>1 ==== ${user.getRole() }</h1>
+			<h1>1 ==== ${user }</h1>
+			
+			<c:import url="/WEB-INF/views/headerAndFooter/headerContent/userHeader.jsp"/>
 		</c:when>
 		<c:when test="${param.auth == 'ROLE_SNSSTAR' }">
-			i am snsStar
+			<c:import url="/WEB-INF/views/headerAndFooter/headerContent/userHeader.jsp"/>
 		</c:when>
 		<c:when test="${param.auth == 'ROLE_COMPANY' }">
-			i am company
+			<c:import url="/WEB-INF/views/headerAndFooter/headerContent/userHeader.jsp"/>
 		</c:when>
 		<c:when test="${param.auth == 'ROLE_MANAGEMENT' }">
-			i am management
+			<c:import url="/WEB-INF/views/headerAndFooter/headerContent/userHeader.jsp"/>
+		</c:when>		
+	
+		<c:when test="${param.auth == 'anonymous' }">
+			<c:import url="/WEB-INF/views/headerAndFooter/headerContent/anonymousHeader.jsp">
+				<c:param name="isIndex" value="True"></c:param>
+			</c:import>
 		</c:when>
 		<c:otherwise>
-			<!-- indexPage -->
-			<c:import url="/WEB-INF/views/headerAndFooter/mainPageHeader.jsp"/>
+			<h1>2 ==== ${user.getRole() }</h1>
+			<h1>2 ==== ${user }</h1>
+			<!-- 기타 페이지들 -->
+			<c:import url="/WEB-INF/views/headerAndFooter/headerContent/anonymousHeader.jsp">
+				<c:param name="isIndex" value="False"></c:param>
+			</c:import>
 		</c:otherwise>			
 	</c:choose>	
-		
+	
 </div>
