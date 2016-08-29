@@ -36,6 +36,7 @@
 			
 			<c:if test="${empty user }">
 				<c:set value="${currentUser }" var="user" scope="session"/>
+				<c:set value="${top2Notice }" var="top2Notice" scope="session"/>
 			</c:if>
 				
 			<c:import url="../headerAndFooter/header.jsp">
