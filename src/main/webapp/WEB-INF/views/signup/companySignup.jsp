@@ -143,7 +143,7 @@
        	회사이름	<input type="text" name="company_name" id="company_name"><br/>
        	회사유형 	<select id="companyselect">
        				<option value="" selected>유형선택</option>
-       				
+       				<
        			</select>
 		<input type="submit" value="확인">
 	</form>
