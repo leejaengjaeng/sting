@@ -1,28 +1,32 @@
 drop table user
-create table user(
-   Uid int AUTO_INCREMENT PRIMARY KEY,
-    id varchar(50) ,
-    phonenumber varchar(50) ,
-    email varchar(50) ,
-    password varchar(50) ,
-    address1 varchar(50) ,
-    address2 varchar(50) ,
-    address3 varchar(50) ,
-    isPermit int ,
-    accountnumber varchar(50) ,
-    role varchar(50)
-);
+CREATE TABLE user (
+  Uid int(11) NOT NULL AUTO_INCREMENT,
+  id varchar(50) DEFAULT NULL,
+  phonenumber varchar(50) DEFAULT NULL,
+  email varchar(50) DEFAULT NULL,
+  password varchar(50) DEFAULT NULL,
+  address1 varchar(50) DEFAULT NULL,
+  address2 varchar(50) DEFAULT NULL,
+  address3 varchar(50) DEFAULT NULL,
+  isPermit int(11) DEFAULT '0',
+  accountnumber varchar(50) DEFAULT NULL,
+  role varchar(50) DEFAULT NULL,
+  PRIMARY KEY (Uid)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
 
 drop table company
-create table company(
-   Cid int AUTO_INCREMENT PRIMARY KEY,
-    Uid varchar(50) ,
-    registration_number varchar(50) ,
-    manager_name varchar(50) ,
-    manager_phonenumber varchar(50) ,
-    interestproduct varchar(50) ,
-    typeofcompany varchar(50) 
-);
+CREATE TABLE company (
+  Cid int(11) NOT NULL AUTO_INCREMENT,
+  Uid varchar(50) DEFAULT NULL,
+  registration_number varchar(50) DEFAULT NULL,
+  manager_name varchar(50) DEFAULT NULL,
+  manager_phonenumber varchar(50) DEFAULT NULL,
+  interestproduct varchar(50) DEFAULT NULL,
+  typeofcompany varchar(50) DEFAULT NULL,
+  company_name varchar(45) DEFAULT NULL,
+  PRIMARY KEY (Cid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table management
 create table management(
