@@ -11,7 +11,8 @@ public interface NoticeDao {
 	
 	public List<NoticeVo> getTop2Notice();
 	
-	public List<NoticeVo> getAtoBinNotice(int a, int b);
+	//a부터 cnt 개 까지 Notice를 가지고옴
+	public List<NoticeVo> getAtoCntinNotice(int a, int cnt);
 	
 	public NoticeVo getNoticeByNid(String id);
 	

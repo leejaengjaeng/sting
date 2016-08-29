@@ -11,4 +11,7 @@
 	<select id="updateHitById" parameterType="String">
 		update notice set Hit = Hit+1 where nid = #{id}
 	</select>	
+	<select id="getAtoCntinNotice" parameterType="hashmap" resultType="com.sting.vo.NoticeVo" >
+		
+	</select>	
 </mapper>
