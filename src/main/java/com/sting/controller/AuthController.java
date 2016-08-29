@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sting.dao.NoticeDao;
 import com.sting.dao.UserDao;
+import com.sting.vo.NoticeVo;
 import com.sting.vo.UserVo;
 
 import org.springframework.ui.Model;
@@ -29,6 +31,8 @@ public class AuthController {
 	
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	NoticeDao noticeDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
@@ -40,7 +44,11 @@ public class AuthController {
 			UserVo currentUser = userDao.getUserById(userId);
 			// 인증 정보가 없으면 userId = anonymousUser
 			// currnetUser = null
+			List<NoticeVo> top2Notice = noticeDao.getTop2Notice();
+			
 			model.addAttribute("currentUser", currentUser);
+			model.addAttribute("top2Notice", top2Notice);
+			
 			return "home/index";		
 		}
 		catch(Exception e)

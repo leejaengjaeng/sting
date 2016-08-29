@@ -9,11 +9,15 @@
 	</div>
 	<div class="col-xs-6">
 		<div class="row">
-			공지 공지 공지 
+			공지 리스트로 가기
 		</div>
 		<div class="row">
-			${user.getId() }
-			메뉴 메뉴 메뉴 메뉴 메뉴 메뉴 메뉴 메뉴 
+			<c:forEach var ="notice" items="${top2Notice }">
+				 ${notice.getTitle() } |
+			</c:forEach>
+		</div>
+		<div class="row">
+			${user.getId() }님 | 회원정보 수정 | 장바구니 | 로그아웃
 		</div>
 	</div>
 </div>	
