@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 
-<link rel="stylesheet" href="resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
 
 <div id="footer" class="container-fluid">
 	<div class="col-xs-3">
-		<img class="img-responsive" src = "resources/imgs/footer_logo.png">
+		<img class="img-responsive" src = "/resources/imgs/footer_logo.png">
 	</div>
 	<div class="col-xs-9">
 		<p>
