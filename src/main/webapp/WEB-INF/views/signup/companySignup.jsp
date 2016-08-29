@@ -106,6 +106,9 @@
         
         }).open();
     }
+	function changeCompany ( comtype ) {
+       document.getElementById("typeofcompany").value=comtype;
+    }
 </script>
 </head>
 <body>
@@ -120,7 +123,6 @@
 		아이디<input type="text" name="id" id="id"> <button type="button" onclick="checkid();">중복검사</button><br/>
 		비밀번호<input type="password" name ="password" id ="password"><br/>
 		비밀번호 확인<input type="password" id ="repassword"><br/>
-		핸드폰<input type="text" name="phonenumber" id="phonenumber"><br/>
 		이메일 <input name="email1" placeholder="이메일" type="text" >
                     <select name="email2" onChange=changeEmail(this.value)>
                         <option value="" selected>이메일선택</option>
@@ -141,10 +143,23 @@
                     <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addr2" >
                     <input type="text" id="sample4_jibunAddress" placeholder="나머지 주소" name="addr3"><br/>
        	회사이름	<input type="text" name="company_name" id="company_name"><br/>
-       	회사유형 	<select id="companyselect">
+       	회사유형 	<select id="companyselect" onChange=changeCompany(this.value)><br/>
        				<option value="" selected>유형선택</option>
-       				<
+       				<option value="대행사">대행사</option>
+       				<option value="유통사">유통사</option>
+       				<option value="제조사">제조사</option>
        			</select>
+       			<input type="hidden" name="typeofcompany" id="typeofcompany">
+       	사업자번호 <input type="text" name="registration_number" id="registration_number"><br/>
+       	담당자이름 <input type="text" name="manager_name" id="manager_name"><br/>
+		담당자전화번호<input type="text" name="manager_phonenumber" id="manager_phonenumber"><br/>
+		취급상품분야<input type="checkbox" name="interestproduct" value="패션">패션
+		<input type="checkbox" name="interestproduct" value="패션">소품
+		<input type="checkbox" name="interestproduct" value="뷰티">뷰티
+		<input type="checkbox" name="interestproduct" value="생활">생활
+		<input type="checkbox" name="interestproduct" value="APP">APP
+		<input type="checkbox" name="interestproduct" value="IDEA">IDEA<br/>
+		사업자등록증 스캔본 <input type="file" name="registration_scan" id="registration_scan">
 		<input type="submit" value="확인">
 	</form>
 	
