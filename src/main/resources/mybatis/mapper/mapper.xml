@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sting.dao.UserDao">
-    <select id="getUserById" parameterType="String" resultType="com.sting.vo.UserVo">
+    <select id="getUserById" parameterType="hashmap" resultType="com.sting.vo.UserVo">
         SELECT * FROM user where id = #{id}
     </select>
     <insert id="makeuser" parameterType="String">
-    	insert into user(id) values (#{id})
+    	insert into user(id,password,phonenumber,email,address1,address2,address3,role) values (#{id},#{password},#{phone},#{email},#{addr1},#{addr2},#{addr3},"1")
     </insert>
     <select id = "checkid" parameterType="String" resultType="int">
     	SELECT count(*) FROM user WHERE id=#{id}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sting.dao.CompanyDao">
+    <select id="getUserById" parameterType="hashmap" resultType="com.sting.vo.CompanyVo">
+        SELECT * FROM user where id = #{id}
+    </select>
+    <insert id="makecompany" parameterType="String">
+    	insert into company(Uid,registration_number,manager_name,manager_phonenumber,interestproduct,typeofcompany,company_name) 
+    	values (#{Uid},#{registration_number},#{manager_name},#{manager_phonenumber},#{interestproduct},#{typeofcompany},#{company_name})
+    </insert>
+    
+</mapper>
