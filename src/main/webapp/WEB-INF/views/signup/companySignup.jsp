@@ -28,7 +28,7 @@
 	    data["id"] = id;
 	    headers[csrfHeader] = csrfToken; 
 		$.ajax({
-		    url : "/checkid",
+		    url : "/signup/checkid",
 		    dataType : "json",
 		    type : "POST",
 		    headers: headers,
@@ -118,7 +118,7 @@
 		</c:import>
 	</div>
 	<div style="margin-left:20%;margin-right:20%">
-	<form action="/signupinput" method="POST">
+	<form action="/signup/signupinput" method="POST">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		아이디<input type="text" name="id" id="id"> <button type="button" onclick="checkid();">중복검사</button><br/>
 		비밀번호<input type="password" name ="password" id ="password"><br/>

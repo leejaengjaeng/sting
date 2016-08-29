@@ -2,6 +2,8 @@ package com.sting.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sting.dao.CompanyDao;
 import com.sting.dao.UserDao;
 import com.sting.vo.UserVo;
+import com.sting.vo.CompanyVo;
 @Controller
 @RequestMapping("/signup")
 public class SignUpController {
@@ -21,6 +25,8 @@ public class SignUpController {
 
 	
 	@Autowired UserDao userMapper;
+	@Autowired CompanyDao companyMapper;
+	
 	@RequestMapping("/agree")
 	public String agree(){
 		return "signup/checkagree";
@@ -36,11 +42,37 @@ public class SignUpController {
 		return "signup/companySignup";
 	}
 	@RequestMapping(value="/signupinput",method=RequestMethod.POST)
-	public String signupinput(UserVo uv){
-		userMapper.makeuser(uv.getId());
-		System.out.println("aaaa"+uv.getId());
-		logger.info("aa");
-		return "home/index";
+	public String signupinput(UserVo uv,CompanyVo cv,HttpServletRequest request){
+		String email=request.getParameter("email1")+request.getParameter("email2");
+		
+		System.out.println(uv.getUid());
+		
+		HashMap<String,String> map=new HashMap<String,String>();
+		map.put("id", uv.getId());
+		map.put("phonenumber", uv.getPhone());
+		map.put("password", uv.getPassword());
+		map.put("email", email);
+		map.put("addr1", request.getParameter("addr1"));
+		map.put("addr2", request.getParameter("addr2"));
+		map.put("addr3", request.getParameter("addr3"));
+		map.put("role", "1");
+		userMapper.makeuser(map);
+		//System.out.println(cv.getCompany_name());
+		
+		UserVo Uid=userMapper.getUserById(uv.getId());
+		int uid=Uid.getUid();
+		
+		HashMap<String,String> mapcom=new HashMap<String,String>();
+		mapcom.put("company_name", cv.getCompany_name());
+		mapcom.put("Uid", Integer.toString(uid));
+		mapcom.put("registration_number", cv.getRegistration_number());
+		mapcom.put("manager_name", cv.getManager_name());
+		mapcom.put("manager_phonenumber", cv.getManager_phonenumber());
+		mapcom.put("interestproduct", cv.getInterestproduct());
+		mapcom.put("typeofcompany",cv.getTypeofcompany());
+		
+		companyMapper.makecompany(mapcom);
+		return "redirect:/";
 	}
 	
 	
