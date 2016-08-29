@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sting.dao.UserDao;
 import com.sting.vo.UserVo;
 @Controller
+@RequestMapping("/signup")
 public class SignUpController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
