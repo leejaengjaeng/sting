@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sting.dao.NoticeDao">
-	<select id="getTop2Notice" parameterType="String" resultType="java.util.list">
+	<select id="getTop2Notice" parameterType="String" resultType="com.sting.vo.NoticeVo">
 		select * from notice order by date desc limit 2
 	</select>
 	<select id="getNoticeByNid" parameterType="String" resultType="com.sting.vo.NoticeVo">

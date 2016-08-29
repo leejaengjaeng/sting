@@ -13,23 +13,26 @@
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="resources/css/common.css">
+<link rel="stylesheet" href="resources/css/body.css">
 	
 <title>Sting</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div>
+		<c:import url="../headerAndFooter/header.jsp"/>
+
+<!-- body -->
+		<!-- 로그인 하지 않은유저 -->
+		<sec:authorize access="isAnonymous()">
+			<meta http-equiv="refresh" content="0; url=/"></meta>
+		</sec:authorize>
 		
+		Notice 공지 사항<br>
 		
-		<c:import url="../headerAndFooter/header.jsp">
-		</c:import>
-		
-		
-		<div class="col-xs-12">	<img class="img-responsive" src="resources/imgs/imgText/txt_05.png"></div>
-		<c:import url="../forms/loginForm.jsp">
-		</c:import>
-		
-		<c:import url="../headerAndFooter/footer.jsp">
-		</c:import>
+	
+<!-- end body -->
+
+		<c:import url="../headerAndFooter/footer.jsp"></c:import>
 	</div>
 </body>
 </html>

@@ -21,22 +21,20 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 	{
 		http
 			.authorizeRequests()
-			//.anyRequest().hasRole("ADMIN")
 			.antMatchers("/signupinput","/checkid").permitAll()
 			.antMatchers("/**","/signupinput","/checkid").permitAll()
 			.antMatchers("/admin").hasRole("ADMIN")
 			.and()
-		/*
 			.formLogin()
 			.loginPage("/login").permitAll() 
 			.loginProcessingUrl("/login.do")
 			.usernameParameter("id")
 			.passwordParameter("password")	
 			.successForwardUrl("/loginProcess.do")
-			.and()*/
-//		.exceptionHandling()
-//			.accessDeniedPage("/insert")
-//			.and()
+			.and()
+		.exceptionHandling()
+			.accessDeniedPage("/insert")
+			.and()
 		.logout()
 			.logoutSuccessUrl("/");
 		//static 寃쎈줈

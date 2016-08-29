@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <link rel="stylesheet" href="resources/css/footer.css">
 
-<div id="footer" class="row">
+<div id="footer" class="container-fluid">
 	<div class="col-xs-3">
 		<img class="img-responsive" src = "resources/imgs/footer_logo.png">
 	</div>

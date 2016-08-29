@@ -33,6 +33,8 @@ public class AuthController {
 	UserDao userDao;
 	@Autowired
 	NoticeDao noticeDao;
+	@Autowired
+	HttpSession session;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
@@ -46,10 +48,17 @@ public class AuthController {
 			// currnetUser = null
 			List<NoticeVo> top2Notice = noticeDao.getTop2Notice();
 			
-			model.addAttribute("currentUser", currentUser);
-			model.addAttribute("top2Notice", top2Notice);
-			
-			return "home/index";		
+			for(int i=0;i<top2Notice.size();i++)
+			{
+				String tmpDate = top2Notice.get(i).getDate();
+				top2Notice.get(i).setDate(tmpDate.substring(0,10));
+			}
+
+
+			session.setAttribute("currentUser", currentUser);
+			session.setAttribute("top2Notice", top2Notice);
+
+			return "redirect:/";		
 		}
 		catch(Exception e)
 		{
@@ -67,6 +76,7 @@ public class AuthController {
 		{
 			new SecurityContextLogoutHandler().logout(req, res, auth);
 		}
+		session.invalidate();
 		return "redirect:/";
 	}
 

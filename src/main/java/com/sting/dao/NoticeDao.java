@@ -10,6 +10,10 @@ import org.apache.ibatis.annotations.Mapper;
 public interface NoticeDao {
 	
 	public List<NoticeVo> getTop2Notice();
+	
+	public List<NoticeVo> getAtoBinNotice(int a, int b);
+	
 	public NoticeVo getNoticeByNid(String id);
+	
 	public void updateHitById(String id);
 }

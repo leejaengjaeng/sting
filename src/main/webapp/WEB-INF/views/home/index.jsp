@@ -13,46 +13,35 @@
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="resources/css/common.css">
+<link rel="stylesheet" href="resources/css/body.css">
 	
 <title>Sting</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div>
+		<c:import url="../headerAndFooter/header.jsp"/>
+
+<!-- body -->
 		<!-- 로그인 하지 않은유저 -->
 		<sec:authorize access="isAnonymous()">
-			<c:import url="../headerAndFooter/header.jsp">
-				<c:param name="auth" value="anonymous"></c:param>	
-			</c:import>
-		
-			<c:import url="../bodys/indexPageBody.jsp">
-			</c:import>
-			
-			<c:import url="../headerAndFooter/footer.jsp">
-			</c:import>
+			<c:choose>
+				<c:when test=${path == "login" }>
+					<img class="img-responsive" src="resources/imgs/imgText/txt_05.png">
+					<!-- 로그인 페이지 맞춤 css 넣기 -->
+					<c:import url="../forms/loginForm.jsp"/>
+				</c:when>
+				<c:otherwise>
+					<c:import url="../bodys/indexPageBody.jsp"></c:import>
+				</c:otherwise> 	
+			</c:choose>
 		</sec:authorize>
-
 		<!-- 로그인한 유저 -->		
 		<sec:authorize access="isAuthenticated()">
-			
-			<c:if test="${empty user }">
-				<c:set value="${currentUser }" var="user" scope="session"/>
-				<c:set value="${top2Notice }" var="top2Notice" scope="session"/>
-			</c:if>
-				
-			<c:import url="../headerAndFooter/header.jsp">
-				<c:param name="auth" value="${currentUser.getRole() }"></c:param>	
-			</c:import>
-		
-			<h1>${user.getId()}</h1>
-			<h1>${user}</h1>
-			<h1>${currentUser.getId()}</h1>
-			
-			
-			
-			<c:import url="../headerAndFooter/footer.jsp">
-			</c:import>
+			사용자별 메인 페이지 넣기 
 		</sec:authorize>
-		
+<!-- end body -->
+
+		<c:import url="../headerAndFooter/footer.jsp"></c:import>
 	</div>
 </body>
 </html>

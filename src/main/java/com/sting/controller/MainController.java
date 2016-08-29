@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 import com.sting.dao.*;
 import com.sting.service.UserAuthService;
+import com.sting.vo.NoticeVo;
 import com.sting.vo.UserVo;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
@@ -28,10 +29,19 @@ import org.springframework.web.multipart.MultipartFile;
 public class MainController {
 		
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
-	@Autowired UserDao userMapper;
+	@Autowired NoticeDao noticeDao;
+	
+	
 	@RequestMapping("/")
 	public String index(Model model)
 	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if(auth.getName() != "anonymousUser")
+		{
+			model.addAttribute("path", "main");
+		}
+		
 		return "home/index";
 	}
 	
@@ -40,30 +50,32 @@ public class MainController {
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-//		if(auth.isAuthenticated())
-//		if(auth instanceof AnonymousAuthenticationToken)
 		if(auth.getName() != "anonymousUser")
 		{
 			logger.debug("userId:"+auth.getName());
 			return "redirect:/";
 		}
-		else		
-			return "home/login";
+		else
+		{
+			model.addAttribute("path","login");
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping("/noticeList")
+	public String noticeList(Model model)
+	{
+		//List<NoticeVo> noticeList = noticeDao.
+		return "home/notice";
 	}
 	
 	@RequestMapping("/admin")
 	@ResponseBody
-	public String adminP()
+	public String adminP(Model model)
 	{
+		model.addAttribute("path","admin");
 		return "admin Page";
 
-	}
-	
-	@RequestMapping("/insert")
-	@ResponseBody
-	public String hh()
-	{
-		return "fuck";
 	}
 	
 }
