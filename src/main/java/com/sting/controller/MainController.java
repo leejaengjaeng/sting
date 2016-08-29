@@ -94,13 +94,20 @@ public class MainController {
 	    logger.info("checkid join");
 	    System.out.println(param);
 	    System.out.println("id is "+param.get("id"));
-	 
+	    String id = param.get("id").toString();
+    	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 	    //your logic
-	 
-	    HashMap<String, Object> hashmap = new HashMap<String, Object>();
-	    hashmap.put("KEY", "YES");
+	    if(userMapper.checkid(id)==0){
+		    hashmap.put("KEY", "YES");
+		    return hashmap;
+	    }
+	    else{
+		    hashmap.put("KEY", "NO");
+		    return hashmap;
+	    }
+	    
 	     
-	    return hashmap;
+	    
 	}
 }
 
