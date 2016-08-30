@@ -91,6 +91,9 @@ public class MainController {
 	{
 		int noticeCnt = noticeDao.getNoticeCnt();
 		
+		//처음 getNotice를 부르기 전에 startP 셋팅용
+		session.setAttribute("startP", 0);
+
 		if(noticeCnt%pagingCnt==0)
 			return noticeCnt/pagingCnt;
 		else

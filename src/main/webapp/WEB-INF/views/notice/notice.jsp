@@ -18,12 +18,6 @@
 <script>
 	$(document).ready(function()
 	{
-		var startPointInSession = ${startP}
-		if(typeof startPointInSession == "undefined")
-			getNotice(0);
-
-		else
-			getNotice(${startP});
 
 		$.ajax({
 			url : "getNoticeCnt",
@@ -34,6 +28,8 @@
 				{	
 					$('#noticePageNation').append('<label>'+(i+1)+'</label> |')
 				}
+
+				getNotice(${startP});
 			},
 			error: function(request,status,error){
 		       //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -62,12 +58,10 @@
 			type:"GET",
 			success: function(result)
 			{
-				console.log(result);
+				//console.log(result);
 				$('#noticeList').empty();
 				for(notice in result)
 				{
-					console.log(result[notice].nid);
-					
 					$('#noticeList').append('<a href=getNoticeDetail/'+result[notice].nid+'>'
 							+result[notice].title+'</a><br>'
 					)
@@ -93,8 +87,8 @@
 			<meta http-equiv="refresh" content="0; url=/"></meta>
 		</sec:authorize>
 	
-		Notice 공지 사항<br>
 		<div id="notices">
+		Notice 공지 사항<br>
 			<div id = "noticeList"></div>
 			<div id="noticePageNation"></div>
 		</div>
