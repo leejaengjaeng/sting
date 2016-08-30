@@ -22,7 +22,7 @@
 	function submitagreement() {
 		if (document.getElementById("agreebtn1").checked == true
 				&& document.getElementById("agreebtn2").checked == true)
-			alert("다음페이지");
+			location.href="/signup/signupintro"
 		else
 			alert("모든 약관에 동의 하셔야 진행할 수 있습니다.");
 	}
