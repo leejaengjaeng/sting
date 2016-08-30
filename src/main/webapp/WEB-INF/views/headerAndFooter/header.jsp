@@ -47,7 +47,7 @@ function gotoagree(){
 			</div>
 			<div class="row">
 				<c:forEach var ="notice" items="${sessionScope.top2Notice }">
-					 ${notice.getDate() } | ${notice.getTitle() } <br>
+					 ${notice.getDate() } | <a href="/getNoticeDetail/${notice.getNid()}"> ${notice.getTitle() }</a><br>
 				</c:forEach>
 			</div>
 			<div class="row">

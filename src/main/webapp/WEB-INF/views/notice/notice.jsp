@@ -16,8 +16,34 @@
 <link rel="stylesheet" href="/resources/css/body.css">
 
 <script>
-	
 	$(document).ready(function()
+	{
+
+		$.ajax({
+			url : "getNoticeCnt",
+			type:"GET",
+			success: function(result)
+			{
+				for(var i=0 ; i< result; i++)
+				{	
+					$('#noticePageNation').append('<label>'+(i+1)+'</label> |')
+				}
+
+				getNotice(${startP});
+			},
+			error: function(request,status,error){
+		       //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		});
+		
+		$("#noticePageNation").on("click","label",function(event)
+		{
+			var start = ($(this)[0].textContent-1) * 10;
+			getNotice(start);
+		});		
+	});
+	
+	var getNotice = function(start)
 	{
 		var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
 		var csrfToken = $("meta[name='_csrf']").attr("content"); 
@@ -28,46 +54,24 @@
 		headers[csrfHeader] = csrfToken; 
 		
 		$.ajax({
-			url :  "/noticeList/0",
+			url :  "/noticeList/"+start,
 			type:"GET",
 			success: function(result)
 			{
-				console.log(result);
+				//console.log(result);
 				$('#noticeList').empty();
 				for(notice in result)
 				{
-					$('#noticeList').append('<li>'+result[notice].title+'</li>')
+					$('#noticeList').append('<a href=getNoticeDetail/'+result[notice].nid+'>'
+							+result[notice].title+'</a><br>'
+					)
 				}
 			},
 			error: function(request,status,error){
-		       alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		     //  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		    }
 		});
-		
-		$.ajax({
-			url : "getNoticeCnt",
-			type:"GET",
-			success: function(result)
-			{
-				for(var i=0 ; i< result; i++)
-				{	
-					console.log(i);
-					$('#noticePageNation').append('<label>'+(i+1)+'</label> |')
-				}
-			},
-			error: function(request,status,error){
-		       alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		    }
-		});
-		
-		$("#noticePageNation").on("click","label",function(event)
-		{
-			alert($(this)[0].textContent);
-			// TODO: ajax 처리하기 
-		});		
-	});
-	
-
+	}
 </script>
 
 	
@@ -82,9 +86,9 @@
 		<sec:authorize access="isAnonymous()">
 			<meta http-equiv="refresh" content="0; url=/"></meta>
 		</sec:authorize>
-		
-		Notice 공지 사항<br>
+	
 		<div id="notices">
+		Notice 공지 사항<br>
 			<div id = "noticeList"></div>
 			<div id="noticePageNation"></div>
 		</div>
