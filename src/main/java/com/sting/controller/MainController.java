@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.sting.dao.*;
 import com.sting.service.UserAuthService;
 import com.sting.vo.NoticeVo;
@@ -31,7 +33,7 @@ public class MainController {
 	private static final int pagingCnt = 10;
 	
 	@Autowired NoticeDao noticeDao;
-	
+	@Autowired HttpSession session;
 	
 	@RequestMapping("/")
 	public String index(Model model)
@@ -63,10 +65,11 @@ public class MainController {
 		}
 	}
 	
+//---- notice ----
 	@RequestMapping("/noticeList")
 	public String redirectNoticeList(Model model)
 	{
-		return "home/notice";
+		return "notice/notice";
 	}
 	
 	@RequestMapping(value="/noticeList/{start}",method=RequestMethod.GET)
@@ -78,6 +81,8 @@ public class MainController {
 		map.put("cnt",pagingCnt);
 		List<NoticeVo> notices = noticeDao.getAtoCntinNotice(map);
 		
+		session.setAttribute("startP", start);
+
 		return notices;
 	}
 	@RequestMapping(value="/getNoticeCnt",method=RequestMethod.GET)
@@ -85,9 +90,25 @@ public class MainController {
 	public int getNoticeCnt()
 	{
 		int noticeCnt = noticeDao.getNoticeCnt();
-		System.out.println("noticeCnt : "+noticeCnt/pagingCnt);
-		return noticeCnt/pagingCnt;
+		
+		if(noticeCnt%pagingCnt==0)
+			return noticeCnt/pagingCnt;
+		else
+			return (noticeCnt/pagingCnt)+1;
 	}
+	
+	@RequestMapping(value="/getNoticeDetail/{nid}",method=RequestMethod.GET)
+	public String getNoticeDetail(Model model,@PathVariable String nid)
+	{
+		NoticeVo notice = noticeDao.getNoticeByNid(nid);
+		model.addAttribute("noticeDetail", notice);
+
+		noticeDao.updateHitById(nid);
+
+		return "notice/noticeDetail";
+	}
+	
+//---- end notice ----
 	
 	@RequestMapping("/admin")
 	@ResponseBody
