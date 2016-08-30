@@ -12,6 +12,9 @@
 		update notice set Hit = Hit+1 where nid = #{id}
 	</select>	
 	<select id="getAtoCntinNotice" parameterType="hashmap" resultType="com.sting.vo.NoticeVo" >
-		
-	</select>	
+		select * from notice order by date desc limit #{start},#{cnt}
+	</select>
+	<select id = "getNoticeCnt" resultType="int">
+    	select COUNT(1) from notice
+    </select>	
 </mapper>

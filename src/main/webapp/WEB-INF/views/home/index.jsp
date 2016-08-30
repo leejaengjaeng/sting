@@ -21,11 +21,12 @@
 	<div>
 		<c:import url="../headerAndFooter/header.jsp"/>
 
+
 <!-- body -->
 		<!-- 로그인 하지 않은유저 -->
 		<sec:authorize access="isAnonymous()">
 			<c:choose>
-				<c:when test=${path == "login" }>
+				<c:when test="${path == 'login' }">
 					<img class="img-responsive" src="resources/imgs/imgText/txt_05.png">
 					<!-- 로그인 페이지 맞춤 css 넣기 -->
 					<c:import url="../forms/loginForm.jsp"/>

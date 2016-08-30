@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
-<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/header.css">
 
 <div id="header" class="row">
 
@@ -17,7 +17,7 @@
 			연예인에게는 그에 대한 리워드를 주는 매칭플랫폼 시스템입니다.
 		</p>
 		
-		<c:if test="${not path == 'login'}">
+		<c:if test="${empty path}">
 			<div id="mainPageBtnWrap" class="row">
 				<div class="col-xs-6">
 					<div style="float:right" class="mainPageBtn" onclick="location.href='/login'">
@@ -39,7 +39,7 @@
 		</div>
 		<div class="col-xs-6">
 			<div class="row">
-				공지 리스트로 가기
+				<a href="/noticeList">공지 리스트로 가기</a>
 			</div>
 			<div class="row">
 				<c:forEach var ="notice" items="${sessionScope.top2Notice }">
