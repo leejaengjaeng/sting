@@ -12,27 +12,30 @@
 <script src="/webjars/jquery/3.1.0/dist/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="resources/css/common.css">
-<link rel="stylesheet" href="resources/css/body.css">
+<link rel="stylesheet" href="/resources/css/common.css">
+<link rel="stylesheet" href="/resources/css/body.css">
 	
 <title>Sting</title>
 </head>
 <body>
 	<div>
-		<c:import url="../headerAndFooter/header.jsp"/>
+		<c:import url="/WEB-INF/views/headerAndFooter/header.jsp"/>
 
 
 <!-- body -->
+		<sec:authorize access="hasRole('ADMIN')">
+			<meta http-equiv="refresh" content="0; url=/adminLogin"></meta>
+		</sec:authorize>
 		<!-- 로그인 하지 않은유저 -->
 		<sec:authorize access="isAnonymous()">
 			<c:choose>
 				<c:when test="${path == 'login' }">
 					<img class="img-responsive" src="resources/imgs/imgText/txt_05.png">
 					<!-- 로그인 페이지 맞춤 css 넣기 -->
-					<c:import url="../forms/loginForm.jsp"/>
+					<c:import url="/WEB-INF/views/forms/loginForm.jsp"/>
 				</c:when>
 				<c:otherwise>
-					<c:import url="../bodys/indexPageBody.jsp"></c:import>
+					<c:import url="/WEB-INF/views/bodys/indexPageBody.jsp"></c:import>
 				</c:otherwise> 	
 			</c:choose>
 		</sec:authorize>
@@ -42,7 +45,7 @@
 		</sec:authorize>
 <!-- end body -->
 
-		<c:import url="../headerAndFooter/footer.jsp"></c:import>
+		<c:import url="/WEB-INF/views/headerAndFooter/footer.jsp"></c:import>
 	</div>
 </body>
 </html>
