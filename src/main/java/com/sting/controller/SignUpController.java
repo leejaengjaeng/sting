@@ -1,5 +1,6 @@
 package com.sting.controller;
 
+import java.io.FileOutputStream;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,22 +8,28 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 import com.sting.dao.CompanyDao;
 import com.sting.dao.UserDao;
-import com.sting.vo.UserVo;
 import com.sting.vo.CompanyVo;
+import com.sting.vo.UserVo;
 @Controller
 @RequestMapping("/signup")
 public class SignUpController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
+    private FileOutputStream fos;
+   
 	
 	@Autowired UserDao userMapper;
 	@Autowired CompanyDao companyMapper;
@@ -41,8 +48,8 @@ public class SignUpController {
 	public String companySignup(){
 		return "signup/companySignup";
 	}
-	@RequestMapping(value="/signupinput",method=RequestMethod.POST)
-	public String signupinput(UserVo uv,CompanyVo cv,HttpServletRequest request){
+	@RequestMapping(value="/signupinput", method=RequestMethod.POST)
+	public String signupinput(UserVo uv,CompanyVo cv,HttpServletRequest request,@RequestParam("registration_scan")MultipartFile file){
 		String email=request.getParameter("email1")+request.getParameter("email2");
 		
 		System.out.println(uv.getUid());
@@ -72,6 +79,30 @@ public class SignUpController {
 		mapcom.put("typeofcompany",cv.getTypeofcompany());
 		
 		companyMapper.makecompany(mapcom);
+		
+		try{
+	         
+            byte fileData[] = file.getBytes();
+             
+            fos = new FileOutputStream("C:\\scan" + "\\" + cv.getCompany_name()+".png");
+             
+            fos.write(fileData);
+         
+        }catch(Exception e){
+             
+            e.printStackTrace();
+             
+        }finally{
+             
+            if(fos != null){
+                 
+                try{
+                    fos.close();
+                }catch(Exception e){}
+                 
+                }
+        }// try end;
+		
 		return "redirect:/";
 	}
 	
@@ -97,4 +128,5 @@ public class SignUpController {
 	     
 	    
 	}
+	
 }
