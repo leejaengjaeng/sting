@@ -5,7 +5,11 @@
 
 
 <link rel="stylesheet" href="/resources/css/header.css">
-
+<script>
+function gotoagree(){
+	location.href="/signup/agree"
+}
+</script>
 <div id="header" class="row">
 
 	<sec:authorize access="isAnonymous()">
@@ -25,7 +29,7 @@
 					</div>
 				</div>
 				<div class="col-xs-6">
-					<div class="mainPageBtn" onclick="")>
+					<div class="mainPageBtn" onclick="gotoagree()")>
 							Sign Up
 					</div>
 				</div>

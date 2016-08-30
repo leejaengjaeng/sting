@@ -11,6 +11,23 @@
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/css/common.css">
 <link rel="stylesheet" href="resources/css/signup.css">
+<script>
+function gosignup(kind){
+	
+	if(kind=="company"){
+		location.href="/signup/companySignup";
+	}
+	else if(kind=="star"){
+		location.href="/signup/starSignup";
+	}
+	else if(kind=="management"){
+		location.href="/signup/managementSignup";
+	}
+	else if(kind=="snsstar"){
+		location.href="/signup/snstarSignup";
+	}
+}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -26,18 +43,18 @@
 				<img src="/resources/imgs/signup.png" class="img-responsive">
 			</div>
 		</center>
-	<div style="float:left;width:30%;height:30%;border:2px solid white;background-color:white">
-	<p>기업회원</p>
-	</div>
-	<div style="float:right;width:30%;height:30%;border:2px solid white;background-color:white">
-	<p>스타회원</p>
-	</div>
-	<div style="margin-top:30px;clear:both;float:left;width:30%;height:30%;border:2px solid white;background-color:white">
-	<p>매니지먼트회원</p>
-	</div>
-	<div style="margin-top:30px;float:right;width:30%;height:30%;border:2px solid white;background-color:white">
-	<p>SNS스타회원</p>
-	</div>	
+	<button style="float:left;width:30%;height:30%;border:2px solid yellow;background-color:yellow" onclick="gosignup('company');">
+	기업회원
+	</button>
+	<button style="float:right;width:30%;height:30%;border:2px solid yellow;background-color:yellow" onclick="gosignup('star');">
+	스타회원
+	</button>
+	<button style="margin-top:30px;clear:both;float:left;width:30%;height:30%;border:2px solid yellow;background-color:yellow" onclick="gosignup('management');">
+	매니지먼트회원
+	</button>
+	<button style="margin-top:30px;float:right;width:30%;height:30%;border:2px solid yellow;background-color:yellow" onclick="gosignup('snsstar');">
+	SNS스타회원
+	</button>	
 	</div>
 	
 	
