@@ -18,7 +18,6 @@
 <script>
 	$(document).ready(function()
 	{
-
 		$.ajax({
 			url : "getNoticeCnt",
 			type:"GET",
@@ -28,7 +27,6 @@
 				{	
 					$('#noticePageNation').append('<label>'+(i+1)+'</label> |')
 				}
-
 				getNotice(${startP});
 			},
 			error: function(request,status,error){
@@ -45,6 +43,9 @@
 	
 	var getNotice = function(start)
 	{
+		if(typeof start == 'undefined')
+			start = 0
+		
 		var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
 		var csrfToken = $("meta[name='_csrf']").attr("content"); 
 		var csrfHeader = $("meta[name='_csrf_header']").attr("content");  // THIS WAS ADDED

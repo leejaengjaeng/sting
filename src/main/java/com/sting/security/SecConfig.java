@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +16,15 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	@Qualifier("UserAuthService")
 	private UserDetailsService UserAuthService;
+	
+	
+	@Override
+    public void configure(WebSecurity web) throws Exception {
+       //statoc files
+		web
+            .ignoring()
+            .antMatchers("/resources/**","/webjars/**");
+    }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
@@ -28,22 +38,27 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/admin").hasRole("ADMIN")
 			.and()
 			.formLogin()
-			.loginPage("/login").permitAll() 
-			.loginProcessingUrl("/login.do")
-			.usernameParameter("id")
-			.passwordParameter("password")	
-			.successForwardUrl("/loginProcess.do")
-			.and()
-		.exceptionHandling()
-			.accessDeniedPage("/insert")
-			.and()
-		.logout()
-			.logoutSuccessUrl("/");
-		//static 寃쎈줈
-		http
+				.loginPage("/login").permitAll() 
+				.loginProcessingUrl("/login.do")
+				.usernameParameter("id")
+				.passwordParameter("password")	
+				.successForwardUrl("/loginProcess.do")
+				.and()
+			.logout()
+				.logoutSuccessUrl("/")
+				.and()		
 			.authorizeRequests()
-			.antMatchers("/css/**","/js/**").permitAll();
+				//for guests
+				.antMatchers("/","/signupinput","/checkid","/login").permitAll()
+				//admin
+				.antMatchers("/adminLogin","/adminMenu/**").hasRole("ADMIN")
+				.anyRequest().authenticated()
+				.and()
+			.exceptionHandling()
+				.accessDeniedPage("/authError");
 	}
+	
+	
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception

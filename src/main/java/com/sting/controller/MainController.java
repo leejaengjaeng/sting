@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -89,11 +90,11 @@ public class MainController {
 	@ResponseBody
 	public int getNoticeCnt()
 	{
-		int noticeCnt = noticeDao.getNoticeCnt();
-		
 		//처음 getNotice를 부르기 전에 startP 셋팅용
 		session.setAttribute("startP", 0);
 
+		int noticeCnt = noticeDao.getNoticeCnt();
+		
 		if(noticeCnt%pagingCnt==0)
 			return noticeCnt/pagingCnt;
 		else
@@ -112,14 +113,10 @@ public class MainController {
 	}
 	
 //---- end notice ----
-	
-	@RequestMapping("/admin")
-	@ResponseBody
+	@RequestMapping("/adminLogin")
 	public String adminP(Model model)
 	{
-		model.addAttribute("path","admin");
-		return "admin Page";
-
+		return "admin/admin";
 	}
 	
 }
