@@ -24,7 +24,7 @@ function gosignup(kind){
 		location.href="/signup/managementSignup";
 	}
 	else if(kind=="snsstar"){
-		location.href="/signup/snstarSignup";
+		location.href="/signup/snsstarSignup";
 	}
 }
 </script>

@@ -21,9 +21,13 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 
 import com.sting.dao.CompanyDao;
 import com.sting.dao.ManagementDao;
+import com.sting.dao.SNSstarDao;
+import com.sting.dao.StarDao;
 import com.sting.dao.UserDao;
 import com.sting.vo.CompanyVo;
 import com.sting.vo.ManagementVo;
+import com.sting.vo.SNSstarVo;
+import com.sting.vo.StarVo;
 import com.sting.vo.UserVo;
 
 @Controller
@@ -40,7 +44,11 @@ public class SignUpController {
 	CompanyDao companyMapper;
 	@Autowired
 	ManagementDao ManagementMapper;
-
+	@Autowired
+	StarDao starMapper;
+	@Autowired
+	SNSstarDao snsstarMapper;
+	
 	@RequestMapping("/agree")
 	public String agree() {
 		return "signup/checkagree";
@@ -59,6 +67,7 @@ public class SignUpController {
 
 	@RequestMapping("/starSignup")
 	public String starSignup(Model model) {
+		model.addAttribute("url", "/signup/signupinputstar");
 		return "signup/signuppageSS";
 	}
 
@@ -68,9 +77,10 @@ public class SignUpController {
 		return "signup/signuppageCM";
 	}
 
-	@RequestMapping("/snsstar")
+	@RequestMapping("/snsstarSignup")
 	public String snsstarSignup(Model model) {
-		return "signup/signuppageSS";
+		model.addAttribute("url","/signup/signupinputsnsstar");
+		return "signup/signuppageSNSstar";
 	}
 
 	@RequestMapping(value = "/signupinputcompany", method = RequestMethod.POST)
@@ -161,6 +171,7 @@ public class SignUpController {
 					file.getOriginalFilename().trim().length());
 			String fileType = filePoint.toLowerCase();
 			fos = new FileOutputStream("C:\\scan" + "\\" + mv.getCompany_name() + "." + fileType);
+			//fos = new FileOutputStream(".." + "\\" + mv.getCompany_name() + "." + fileType);
 			fos.write(fileData);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -174,7 +185,66 @@ public class SignUpController {
 		} // try end;
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/signupinputstar", method=RequestMethod.POST)
+	public String signupinputstar(UserVo uv, StarVo sv, HttpServletRequest request
+			){
+		String email = request.getParameter("email1") +"@"+ request.getParameter("email2");
 
+		System.out.println(uv.getUid()+"aaaa");
+
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", uv.getId());
+		map.put("phonenumber", uv.getPhone());
+		map.put("password", uv.getPassword());
+		map.put("email", email);
+		map.put("role", "1");
+		userMapper.makeuser(map);
+
+		UserVo Uid = userMapper.getUserById(uv.getId());
+		int uid = Uid.getUid();
+		System.out.println(sv.getType());
+		System.out.println(sv.getSNSurl());
+		HashMap<String, String> mapstar = new HashMap<String, String>();
+		mapstar.put("uid", Integer.toString(uid));
+		mapstar.put("management", sv.getManagement());
+		mapstar.put("favoritem", sv.getFavoritem());
+		mapstar.put("SNSurl", sv.getSNSurl());
+		mapstar.put("type", sv.getType());
+		mapstar.put("wage", sv.getWage());
+		
+		starMapper.makestar(mapstar);
+		return "redirect:/";
+	}
+	@RequestMapping(value="/signupinputsnsstar",method=RequestMethod.POST)
+	public String signupinputsnsstar(UserVo uv,SNSstarVo sv,HttpServletRequest request){
+		String email = request.getParameter("email1") +"@"+ request.getParameter("email2");
+
+		System.out.println(uv.getUid()+"aaaa");
+
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", uv.getId());
+		map.put("phonenumber", uv.getPhone());
+		map.put("password", uv.getPassword());
+		map.put("email", email);
+		map.put("role", "1");
+		userMapper.makeuser(map);
+
+		UserVo Uid = userMapper.getUserById(uv.getId());
+		int uid = Uid.getUid();
+		//System.out.println(sv.getType());
+		//System.out.println(sv.getSNSurl());
+		HashMap<String, String> mapstar = new HashMap<String, String>();
+		mapstar.put("uid", Integer.toString(uid));
+		mapstar.put("bankname", sv.getBankname());
+		mapstar.put("favoritem", sv.getFavoritem());
+		mapstar.put("SNSurl", sv.getSNSurl());
+		mapstar.put("accountnumber", sv.getAccountnumber());
+		mapstar.put("wage", sv.getWage());
+		
+		snsstarMapper.makesnsstar(mapstar);
+		return "redirect:/";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/checkid", method = RequestMethod.POST)

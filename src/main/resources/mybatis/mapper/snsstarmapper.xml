@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sting.dao.SNSstarDao">
+    <select id="getStarById" parameterType="String" resultType="com.sting.vo.ManagementVo">
+        SELECT * FROM user where id = #{id}
+    </select>
+    <insert id="makesnsstar" parameterType="hashmap">
+    	insert into snsstar(uid,bankname,favoritem,SNSurl,accountnumber) 
+    	values (#{uid},#{bankname},#{favoritem},#{SNSurl},#{accountnumber})
+    </insert>
+    
+</mapper>

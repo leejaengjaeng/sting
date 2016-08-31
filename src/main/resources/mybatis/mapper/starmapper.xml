@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sting.dao.StarDao">
+    <select id="getStarById" parameterType="String" resultType="com.sting.vo.ManagementVo">
+        SELECT * FROM user where id = #{id}
+    </select>
+    <insert id="makestar" parameterType="hashmap">
+    	insert into star(uid,management,favoritem,SNSurl,type,wage) 
+    	values (#{uid},#{management},#{favoritem},#{SNSurl},#{type},#{wage})
+    </insert>
+    
+</mapper>
