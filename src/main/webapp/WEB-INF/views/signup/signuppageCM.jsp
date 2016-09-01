@@ -28,7 +28,13 @@
 	
 		<form action=${url} name="signupform" method="POST" enctype="multipart/form-data" onsubmit="return execute();">
 			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" /> 아이디<input type="text" name="id" id="id" required>
+				value="${_csrf.token}" /> 
+				<img id="blah" src="#" alr="your image" width="100px" height="100px"/>
+		<input type="file" onchange="readURL(this);" value="로고 업로드"/  accept="image/gif, image/jpeg, image/png">
+		회사로고
+				
+				
+				아이디<input type="text" name="id" id="id" required>
 			<button type="button" onclick="checkid();">중복검사</button>
 			<br /> 비밀번호<input type="password" name="password" id="password" required><br />
 			비밀번호 확인<input type="password" id="repassword"  onkeyup="checkpwd();" required><div id="checkpassword"> </div><br/>
