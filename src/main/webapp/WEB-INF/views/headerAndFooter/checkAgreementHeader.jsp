@@ -15,7 +15,7 @@
 	
 	<br/>
 	<center>
-	<img class="img-responsive" src="/resources/imgs/logo.png">
+	<img class="img-responsive" src="/resources/imgs/logo.png" onclick="location.href='/'">
 	</center>
 	<br/><br/><br/>
 	</div>

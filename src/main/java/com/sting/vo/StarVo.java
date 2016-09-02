@@ -8,6 +8,13 @@ public class StarVo {
 	private String SNSurl;
 	private String type;
 	private String wage;
+	private String name;
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name=name;
+	}
 	public int getSid() {
 		return sid;
 	}

@@ -6,8 +6,8 @@
         SELECT * FROM user where id = #{id}
     </select>
     <insert id="makestar" parameterType="hashmap">
-    	insert into star(uid,management,favoritem,SNSurl,type,wage) 
-    	values (#{uid},#{management},#{favoritem},#{SNSurl},#{type},#{wage})
+    	insert into star(uid,management,favoritem,SNSurl,type,wage,name) 
+    	values (#{uid},#{management},#{favoritem},#{SNSurl},#{type},#{wage},#{name})
     </insert>
     
 </mapper>
