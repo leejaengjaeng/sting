@@ -6,3 +6,9 @@
 /*.log/
 
 *.log
+/build/
+
+.classpath
+.project
+.gradle/
+.settings/

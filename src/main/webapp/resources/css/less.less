@@ -1,0 +1,122 @@
+@soft_black : #262626;
+*{border-collapse: collapse;}
+//class
+.tr{
+    transition: .25s;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+}
+//agree
+*{box-sizing: border-box; margin: 0 auto; }
+#agreeallcont{
+    padding: 10px; 
+    border-radius: 5px; 
+    width: 1000px; 
+    background-color:#e0e0e0; 
+    margin-top: 50px;
+    height: 75px;
+    color: darkgrey;
+    
+    
+}
+.allagreetext{
+    text-align:left;
+	font-size:1.4rem;
+	font-weight:bold;
+    display:block;
+    margin-top: 7px;
+    line-height: 2.1rem;
+    width: 875px;
+    float: left;
+    
+}
+.agreebtn{
+    width: 100px;
+    background: none;
+    color: #383838;
+    font-size: 1.4rem;
+    height: 35px;
+    margin-top: 7px;
+	cursor:pointer;		
+	font-weight:bold;
+    text-align:center;
+    border: none;
+    display: block; float: left;
+    .tr;    
+}
+.agreebtn:hover{
+    background: #ededed;
+    color: fade(#000,50);
+}
+.form-control{overflow-y: scroll;}
+.agreeheadertext{color: white; display: inline-block; margin-bottom: 30px;}
+.agreetxtbox{
+    width: 1000px;
+    text-align: left;
+}
+.agreebtn2{width: 150px; height: 35px; border: 2px solid #fff; color: #fff; background: none; margin-top: 25px; .tr;}
+#agreebtn1{float: right;}
+#agreebtn2{float: right;}
+
+//sign intro
+.signgroup{
+    width:48%; 
+    float: left;
+    height:300px;  
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    .wrap_black{
+        width: 100%; 
+        position: absolute;
+        background: #000;
+        height: 100%;
+        left: 0;
+        top: 0;
+        img{
+            width: 100%; 
+            position: absolute;            
+            .tr;            
+        }
+         &:hover>img{
+            transform: scale(1.1,1.1);
+            -moz-transform: scale(1.1,1.1);
+            -webkit-transform: scale(1.1,1.1);
+        } 
+    }    
+    .txtbox{
+        position: absolute; 
+        color: white; 
+        top: 60%; 
+        left: 5%;
+    }
+    .goto{
+        position: absolute;
+        top: 65%;
+        right: 5%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+}
+
+//signup
+.form_table{
+    width: 1000px;
+    text-align: center;
+    background: #e7e7e7;
+    padding: 15px;
+    border-radius: 10px;
+    h3{
+        color: #262626 !important;
+    }
+    form{
+        table{
+            tr{
+                td{
+                    
+                }
+            }
+        }
+    }    
+}
