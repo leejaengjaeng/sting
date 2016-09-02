@@ -13,7 +13,81 @@
 <link rel="stylesheet" href="resources/css/common.css">
 <link rel="stylesheet" href="resources/css/signup.css">
 <link rel="stylesheet" href="resources/css/less.css">
+<style>
+    *{box-sizing: border-box;}
+#black_wrap{
+    width: 100%;
+    height: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0;
+    background:rgba(0,0,0,0.5);
+    display: none;
+    z-index: 4
+    overflow: hidden;
+}    
+#layer_pop{
+    width: 750px;
+    height: 800px; 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+    background: #fff;
+    display: none;
+    box-shadow: 0 0 5px 0 #000;
+    border-radius: 15px;
+    padding: 20px;
+    
+}
+.inp_title{
+    width: 100%;
+    height: 40px;    
+    border-radius:10px;
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    padding-left: 5px;
+    float: left;
+    }
+       .user_box{
+        float: left;
+        width: 100%;
+    }
 
+    .txtarea{
+        float: left;
+        width: 100%;
+        
+        background: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius:10px;
+        height: 200px;
+        margin-top: 20px;
+        padding: 10px;
+    }
+    .btn1{
+        width: 100px;
+        height: 35px;
+        background:none;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        float: right;
+        margin: 10px 0 10px 0;
+    }
+    #poz{
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    #close{
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        font-size: 0.7rem;
+    }
+</style>
 <title>Insert title here</title>
 </head>
 <body>

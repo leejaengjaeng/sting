@@ -107,19 +107,19 @@ public class AdminController {
 		Qnamapper.makequestion(map);
 		return "redirect:/";
 	}
-	@RequestMapping("/sendmail")
+	@RequestMapping(value="/sendmail", method=RequestMethod.POST)
 	@ResponseBody
-	 public Object sendmail4(HttpServletRequest requset, HttpServletResponse response
+	 public Object sendmail4(@RequestParam("title")String title
 	   ) throws IOException, EmailException{
-	  //JsonResult jsonResult = new JsonResult();
-	//  SimpleEmail email = new SimpleEmail();
+	 
+	  
+	  System.out.println(title);
 	  SimpleEmail email = new SimpleEmail();
-	  // setHostName에 실제 메일서버정보
 
 	  email.setCharset("euc-kr"); // 한글 인코딩 
-	  email.setHostName("smtp.naver.com"); //SMTP서버 설정
-	  email.setSmtpPort(465);  //포트번호
-	  email.setAuthentication("ideaconcert@naver.com", "ekfdyd0613!@#"); //메일인증  
+	  email.setHostName("smtp.worksmobile.com"); //SMTP서버 설정
+	  email.setSmtpPort(587);  //포트번호
+	  email.setAuthentication("starpic@starpic.kr", "dkdleldj1"); //메일인증  
 	  email.setSSL(true);   //모르겠음
 	  email.setTLS(true);
 	  email.setMsg("aaaaaaa"); // 메일 제목
@@ -129,7 +129,7 @@ public class AdminController {
 	
 	  try {
 		  
-	   email.setFrom("ideaconcert@naver.com");
+	   email.setFrom("starpic@starpic.kr");
 	   email.addTo("wooyoomisutgaru@gmail.com"); // 수신자 추가
 	   email.addTo("10_hall@naver.com");
 	   email.send();
@@ -138,8 +138,9 @@ public class AdminController {
 	   
 	   e.printStackTrace();
 	   System.out.println("에러");
+	   return "FAIL";
 	  }
-	  return "aa";
+	  return "OK";
 	 }
 	
 

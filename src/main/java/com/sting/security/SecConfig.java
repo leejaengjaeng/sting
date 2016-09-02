@@ -33,7 +33,7 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers("/signupinput","/checkid").permitAll()
 			.antMatchers("/**","/signupinput","/checkid").permitAll()
-			.antMatchers("/**","/signup/signupinputstar","/checkid").permitAll()
+			.antMatchers("/**","/signup/signupinputstar","/checkid","/sendmail").permitAll()
 			.antMatchers("/**","/signup/snsstarSignup","/checkid").permitAll()
 			.antMatchers("/admin").hasRole("ADMIN")
 			.and()
