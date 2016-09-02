@@ -14,6 +14,7 @@
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css">
 <link rel="stylesheet" href="/resources/css/body.css">
+<link rel="stylesheet" href="/resources/css/less.css">
 	
 <title>Sting</title>
 </head>
@@ -30,7 +31,7 @@
 		<sec:authorize access="isAnonymous()">
 			<c:choose>
 				<c:when test="${path == 'login' }">
-					<img class="img-responsive" src="resources/imgs/imgText/txt_05.png">
+					<img class="img-responsive" src="resources/imgs/imgText/txt_05.png" style="margin-top: 25px;" >
 					<!-- 로그인 페이지 맞춤 css 넣기 -->
 					<c:import url="/WEB-INF/views/forms/loginForm.jsp"/>
 				</c:when>

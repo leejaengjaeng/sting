@@ -15,8 +15,8 @@
 	
 	<br/>
 	<center>
-	<img class="img-responsive" src="/resources/imgs/logo.png" onclick="location.href='/'">
-	</center>
+	<img class="img-responsive" src="/resources/imgs/logo.png" onclick="location.href='/'" style="cursor: 
+	pointer;">	</center>
 	<br/><br/><br/>
 	</div>
 </div>
