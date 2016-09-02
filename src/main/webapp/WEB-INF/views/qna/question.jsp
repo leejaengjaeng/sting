@@ -13,16 +13,23 @@
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/css/common.css">
 <link rel="stylesheet" href="resources/css/signup.css">
+<link rel="stylesheet" href="resources/css/less.css">
 <title>Insert title here</title>
 </head>
 <body>
-<h2>문의사항</h2>
-<form method="POST" action="/savequestion">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-제목 <input type="text" name="title" id="title"><br/>
-내용 <textarea name="content" id="content" ></textarea><br/>
-<input type="submit" value="문의사항 제출"><br/>
-문의사항은 회원가입 시 입력하신 메일로 답변이 전달됩니다.
-</form>
+	<div id="qabox">
+		<h3>문의사항</h3>		
+		<form method="POST" action="/savequestion">
+		<div id="qa_inp">
+			<input type="text" name="title" id="title" placeholder="Title">
+			<textarea name="content" id="content"></textarea>
+			<span>문의사항은 회원가입 시 입력하신 메일로 답변이 전달됩니다.</span>
+			<div id="btn_box">
+				<button>전송</button>
+				</form>
+				<button>취소</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

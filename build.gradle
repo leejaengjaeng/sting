@@ -60,6 +60,17 @@ dependencies {
 	 compile group: 'org.projectlombok', name: 'lombok', version: '1.16.8'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    //mail
+    compile "org.springframework:spring-context-support"
+    compile "com.sun.mail:javax.mail"
+    compile("org.springframework.boot:spring-boot-starter-mail")
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-email
+	compile group: 'org.apache.commons', name: 'commons-email', version: '1.1'
+ 	// https://mvnrepository.com/artifact/org.json/json
+	compile group: 'org.json', name: 'json', version: '20160810'
+ 	// https://mvnrepository.com/artifact/com.sun.mail/smtp
+compile group: 'com.sun.mail', name: 'smtp', version: '1.5.6'
+ 	
 }
 
 

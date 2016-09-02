@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css">
 <script src="/webjars/jquery/3.1.0/dist/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="resources/css/less.css">
 <link rel="stylesheet" href="/resources/css/common.css">
 <link rel="stylesheet" href="/resources/css/body.css">
 
@@ -158,7 +158,8 @@
 	}
 	function answer(uid){
 		//팝업 띄우는 부분
-		
+		alert(uid);
+		window.showModalDialog("answer.html", "some arguments", "dialogWidth:500px;dialogHeight:200px");
 	}
 </script>
 

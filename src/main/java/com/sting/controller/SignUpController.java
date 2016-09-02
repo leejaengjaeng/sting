@@ -220,6 +220,8 @@ public class SignUpController {
 		return "redirect:/";
 	}
 	
+	
+	
 	@ResponseBody
 	@RequestMapping(value = "/checkid", method = RequestMethod.POST)
 	public HashMap<String, Object> checkId(@RequestParam HashMap<String, Object> param) {
