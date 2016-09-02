@@ -33,7 +33,7 @@
 		메인사진<br/>
 		아이디<input type="text" name="id" id="id"><button type="button" onclick="checkid();">중복검사</button><br/>
 		비밀번호<input type="password" name="password" id="password"><br/>
-		비밀번호<input type="password" name="password" id="repassword"><br/>
+		비밀번호 확인<input type="password" name="repassword" id="repassword"><br/>
 		이메일 <input name="email1" placeholder="이메일" type="text"> 
 				<select name="email2" onChange=changeEmail(this.value) required>
 				<option value="" selected>이메일선택</option>

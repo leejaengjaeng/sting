@@ -37,6 +37,7 @@
 	{
 		$('#adminContainer label').click(function()
 		{
+			
 			$('#adminContent').empty();
 
 			var menuSelector = this.id;
@@ -61,8 +62,9 @@
 				//getReqContent("/adminMenu/reqList");
 				break;
 			case "Menu_qna" :
+				alert("aa");
 				$('#adminContent').append(qnaContent);
-				//getReqContent("/adminMenu/reqList");
+				getQnaContent("/adminMenu/QnaList");
 				break;
 			default:
 				alert('너는 뭐니 ' + menuSelector)
@@ -128,6 +130,36 @@
 			}
 		});	
 	}
+	var getQnaContent = function(reqUrl)
+	{
+		$.ajax({
+			url : reqUrl,
+			type:"GET",
+			success:function(result)
+			{
+				var appendCode = "";
+				
+				for(qna in result)
+				{
+					appendCode = appendCode + 
+					"<li class='qnaItem'><input type='hidden' value='"+result[qna].uid+"'/>"+result[qna].title+
+					"| "+result[qna].id+"<button onclick='answer("+result[qna].uid+");'> 응답 </button></li><br>";
+					
+				}
+				$('#adminQnaList').empty();
+				$('#adminQnaList').append(appendCode);
+				
+			},
+			error:function(error)
+			{
+				alert(error);
+			}
+		})
+	}
+	function answer(uid){
+		//팝업 띄우는 부분
+		
+	}
 </script>
 
 
@@ -163,7 +195,7 @@
 				<c:import url="/WEB-INF/views/bodys/admin/reqList.jsp"/>
 			</div>
 			<div id="qnaContent">
-				<c:import url="/WEB-INF/views/bodys/admin/reqList.jsp"/>
+				<c:import url="/WEB-INF/views/bodys/admin/qnaList.jsp"/>
 			</div>
 		</div>
 	</div>	
