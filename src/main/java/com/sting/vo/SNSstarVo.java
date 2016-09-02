@@ -8,6 +8,13 @@ public class SNSstarVo {
 	private String SNSurl;
 	private String wage;
 	private String accountnumber;
+	private String name;
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name=name;
+	}
 	public int getSid() {
 		return sid;
 	}

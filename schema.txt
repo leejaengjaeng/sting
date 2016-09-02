@@ -1,122 +1,140 @@
-drop table user
-CREATE TABLE user (
-  Uid int(11) NOT NULL AUTO_INCREMENT,
-  id varchar(50) DEFAULT NULL,
-  phonenumber varchar(50) DEFAULT NULL,
-  email varchar(50) DEFAULT NULL,
-  password varchar(50) DEFAULT NULL,
-  address1 varchar(50) DEFAULT NULL,
-  address2 varchar(50) DEFAULT NULL,
-  address3 varchar(50) DEFAULT NULL,
-  isPermit int(11) DEFAULT '0',
-  accountnumber varchar(50) DEFAULT NULL,
-  role varchar(50) DEFAULT NULL,
-  PRIMARY KEY (Uid)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
 
 drop table company
-CREATE TABLE company (
-  Cid int(11) NOT NULL AUTO_INCREMENT,
-  Uid varchar(50) DEFAULT NULL,
-  registration_number varchar(50) DEFAULT NULL,
-  manager_name varchar(50) DEFAULT NULL,
-  manager_phonenumber varchar(50) DEFAULT NULL,
-  interestproduct varchar(50) DEFAULT NULL,
-  typeofcompany varchar(50) DEFAULT NULL,
-  company_name varchar(45) DEFAULT NULL,
-  PRIMARY KEY (Cid)
+CREATE TABLE `company` (
+  `Cid` int(11) NOT NULL AUTO_INCREMENT,
+  `Uid` varchar(50) DEFAULT NULL,
+  `registration_number` varchar(50) DEFAULT NULL,
+  `manager_name` varchar(50) DEFAULT NULL,
+  `manager_phonenumber` varchar(50) DEFAULT NULL,
+  `interestproduct` varchar(50) DEFAULT NULL,
+  `typeofcompany` varchar(50) DEFAULT NULL,
+  `company_name` varchar(45) DEFAULT NULL,
+  `logourl` varchar(100) DEFAULT NULL,
+  `licenceurl` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+drop table item
+CREATE TABLE `item` (
+  `iid` int(11) NOT NULL AUTO_INCREMENT,
+  `category` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `cost` varchar(50) DEFAULT NULL,
+  `cid` int(11) DEFAULT NULL,
+  `sellingsiteurl` varchar(50) DEFAULT NULL,
+  `detailexplain` text,
+  PRIMARY KEY (`iid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table itemimage
+CREATE TABLE `itemimage` (
+  `iiid` int(11) NOT NULL AUTO_INCREMENT,
+  `iid` int(11) DEFAULT NULL,
+  `imageurl` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`iiid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table management
-create table management(
-   Cid int AUTO_INCREMENT PRIMARY KEY,
-    Uid varchar(50) ,
-    registration_number varchar(50) ,
-    manager_name varchar(50) ,
-    manager_phonenumber varchar(50) 
-);
-
-drop table star
-create table star(
-   sid int AUTO_INCREMENT PRIMARY KEY,
-    uid varchar(50) ,
-    management varchar(50) ,
-    favoritem varchar(50) ,
-    SNSurl varchar(50) ,
-    type int ,
-    wage varchar(50) 
-);
-
-drop table starbody
-create table starbody(
-   Sid int ,
-    shoulderwidth double ,
-    registration_number varchar(50) ,
-    manager_name varchar(50) ,
-    manager_phonenumber varchar(50) ,
-    interestproduct varchar(50) ,
-    typeofcompany varchar(50) 
-);
-
-drop table starimage
-create table starimage(
-   siid int auto_increment primary key,
-    sid int ,
-    imageurl varchar(100)
-);
-
-drop table item
-create table item(
-   iid int auto_increment primary key,
-    category int ,
-    name varchar(50) ,
-    cost varchar(50) ,
-    cid int ,
-    sellingsiteurl varchar(50) ,
-    detailexplain text
-);
-
-drop table itemimage
-create table itemimage(
-   iiid int auto_increment primary key,
-    iid int ,
-    imageurl varchar(100)
-);
+CREATE TABLE `management` (
+  `Mid` int(11) NOT NULL AUTO_INCREMENT,
+  `Uid` varchar(50) DEFAULT NULL,
+  `registration_number` varchar(50) DEFAULT NULL,
+  `manager_name` varchar(50) DEFAULT NULL,
+  `manager_phonenumber` varchar(50) DEFAULT NULL,
+  `interestproduct` varchar(45) DEFAULT NULL,
+  `typeofcompany` varchar(45) DEFAULT NULL,
+  `company_name` varchar(45) DEFAULT NULL,
+  `licenceurl` varchar(100) DEFAULT NULL,
+  `logourl` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Mid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 drop table matching
-create table matching(
-   mid int auto_increment primary key,
-    uid int ,
-   progress int 
-);
+CREATE TABLE `matching` (
+  `mid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `progress` int(11) DEFAULT NULL,
+  PRIMARY KEY (`mid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table notice
-create table notice(
-   nid int auto_increment primary key,
-    title varchar(50) ,
-    content text ,
-    date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Hit int 
-);
+CREATE TABLE `notice` (
+  `nid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `content` text,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `Hit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`nid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table qna
-create table qna(
-   qid int auto_increment primary key,
-    uid int ,
-    title varchar(50),
-    content text ,
-    date DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+CREATE TABLE `qna` (
+  `qid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `content` text,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`qid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-drop table snsStar
-create table snsStar(
-    sid int AUTO_INCREMENT PRIMARY KEY,
-    Uid varchar(50) ,
-    snsName varchar(50) ,
-    snsUrl varchar(50) ,
-    numofvisitor varchar(50) ,
-    favorproduct varchar(50) ,
-    wage varchar(50) 
-);
+drop table snsstar
+CREATE TABLE `snsstar` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `Uid` varchar(50) DEFAULT NULL,
+  `SNSurl` varchar(50) DEFAULT NULL,
+  `favoritem` varchar(50) DEFAULT NULL,
+  `wage` varchar(50) DEFAULT NULL,
+  `bankname` varchar(45) DEFAULT NULL,
+  `accountnumber` varchar(45) DEFAULT NULL,
+  `mainimageurl` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+drop table star
+CREATE TABLE `star` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(50) DEFAULT NULL,
+  `management` varchar(50) DEFAULT NULL,
+  `favoritem` varchar(50) DEFAULT NULL,
+  `SNSurl` varchar(50) DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  `wage` varchar(50) DEFAULT NULL,
+  `mainimageurl` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+drop table starbody
+CREATE TABLE `starbody` (
+  `Sid` int(11) DEFAULT NULL,
+  `shoulderwidth` double DEFAULT NULL,
+  `registration_number` varchar(50) DEFAULT NULL,
+  `manager_name` varchar(50) DEFAULT NULL,
+  `manager_phonenumber` varchar(50) DEFAULT NULL,
+  `interestproduct` varchar(50) DEFAULT NULL,
+  `typeofcompany` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table starimage
+CREATE TABLE `starimage` (
+  `siid` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int(11) DEFAULT NULL,
+  `imageurl` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`siid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table user
+CREATE TABLE `user` (
+  `Uid` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(50) DEFAULT NULL,
+  `phonenumber` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `address1` varchar(50) DEFAULT NULL,
+  `address2` varchar(50) DEFAULT NULL,
+  `address3` varchar(50) DEFAULT NULL,
+  `isPermit` int(11) DEFAULT '0',
+  `accountnumber` varchar(50) DEFAULT NULL,
+  `role` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;

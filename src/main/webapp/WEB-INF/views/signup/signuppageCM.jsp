@@ -30,7 +30,7 @@
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" /> 
 				<img id="blah" src="#" alr="your image" width="100px" height="100px"/>
-		<input type="file" onchange="readURL(this);" value="로고 업로드"/  accept="image/gif, image/jpeg, image/png">
+		<input type="file" name="logoimage" onchange="readURL(this);" value="로고 업로드"/  accept="image/gif, image/jpeg, image/png">
 		회사로고
 				
 				

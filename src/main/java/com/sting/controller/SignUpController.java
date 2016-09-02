@@ -24,6 +24,7 @@ import com.sting.dao.ManagementDao;
 import com.sting.dao.SNSstarDao;
 import com.sting.dao.StarDao;
 import com.sting.dao.UserDao;
+import com.sting.service.SignupService;
 import com.sting.vo.CompanyVo;
 import com.sting.vo.ManagementVo;
 import com.sting.vo.SNSstarVo;
@@ -35,7 +36,7 @@ import com.sting.vo.UserVo;
 public class SignUpController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
-
+	SignupService ss = new SignupService();
 	private FileOutputStream fos;
 
 	@Autowired
@@ -85,7 +86,7 @@ public class SignUpController {
 
 	@RequestMapping(value = "/signupinputcompany", method = RequestMethod.POST)
 	public String signupinputcompany(UserVo uv, CompanyVo cv, HttpServletRequest request,
-			@RequestParam("registration_scan") MultipartFile file) {
+			@RequestParam("registration_scan") MultipartFile file,@RequestParam("logoimage") MultipartFile logo) {
 		String email = request.getParameter("email1") + request.getParameter("email2");
 
 		System.out.println(uv.getUid());
@@ -112,31 +113,17 @@ public class SignUpController {
 		mapcom.put("manager_phonenumber", cv.getManager_phonenumber());
 		mapcom.put("interestproduct", cv.getInterestproduct());
 		mapcom.put("typeofcompany", cv.getTypeofcompany());
+		
 		companyMapper.makecompany(mapcom);
-		try {
-			byte fileData[] = file.getBytes();
-			int pathPoint = file.getOriginalFilename().trim().lastIndexOf(".");
-			String filePoint = file.getOriginalFilename().trim().substring(pathPoint + 1,
-					file.getOriginalFilename().trim().length());
-			String fileType = filePoint.toLowerCase();
-			fos = new FileOutputStream("C:\\scan" + "\\" + cv.getCompany_name() + "." + fileType);
-			fos.write(fileData);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (fos != null) {
-				try {
-					fos.close();
-				} catch (Exception e) {
-				}
-			}
-		} // try end;
+		
+		ss.makeimageFile(file, cv.getCompany_name(),"company\\registration_scan\\");
+		ss.makeimageFile(logo,cv.getCompany_name(),"company\\logo\\");
 		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/signupinputmanagement", method = RequestMethod.POST)
 	public String signupinputmanagement(UserVo uv, ManagementVo mv, HttpServletRequest request,
-			@RequestParam("registration_scan") MultipartFile file) {
+			@RequestParam("registration_scan") MultipartFile file,@RequestParam("logoimage") MultipartFile logo) {
 		String email = request.getParameter("email1") + request.getParameter("email2");
 
 		//System.out.println(uv.getUid());
@@ -164,31 +151,14 @@ public class SignUpController {
 		mapcom.put("interestproduct", mv.getInterestproduct());
 		mapcom.put("typeofcompany", mv.getTypeofcompany());
 		ManagementMapper.makemanagement(mapcom);
-		try {
-			byte fileData[] = file.getBytes();
-			int pathPoint = file.getOriginalFilename().trim().lastIndexOf(".");
-			String filePoint = file.getOriginalFilename().trim().substring(pathPoint + 1,
-					file.getOriginalFilename().trim().length());
-			String fileType = filePoint.toLowerCase();
-			fos = new FileOutputStream("C:\\scan" + "\\" + mv.getCompany_name() + "." + fileType);
-			//fos = new FileOutputStream(".." + "\\" + mv.getCompany_name() + "." + fileType);
-			fos.write(fileData);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (fos != null) {
-				try {
-					fos.close();
-				} catch (Exception e) {
-				}
-			}
-		} // try end;
+		ss.makeimageFile(file, mv.getCompany_name(), "management\\registration_scan\\");
+		ss.makeimageFile(logo,mv.getCompany_name(),"management\\logo\\");
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/signupinputstar", method=RequestMethod.POST)
 	public String signupinputstar(UserVo uv, StarVo sv, HttpServletRequest request
-			){
+			,@RequestParam("mainimg") MultipartFile mainimg){
 		String email = request.getParameter("email1") +"@"+ request.getParameter("email2");
 
 		System.out.println(uv.getUid()+"aaaa");
@@ -212,12 +182,15 @@ public class SignUpController {
 		mapstar.put("SNSurl", sv.getSNSurl());
 		mapstar.put("type", sv.getType());
 		mapstar.put("wage", sv.getWage());
-		
+		mapstar.put("name", sv.getName());
+		ss.makeimageFile(mainimg, sv.getName(), "star\\mainimg\\");
+
 		starMapper.makestar(mapstar);
 		return "redirect:/";
 	}
 	@RequestMapping(value="/signupinputsnsstar",method=RequestMethod.POST)
-	public String signupinputsnsstar(UserVo uv,SNSstarVo sv,HttpServletRequest request){
+	public String signupinputsnsstar(UserVo uv,SNSstarVo sv,HttpServletRequest request,
+			@RequestParam("mainimg") MultipartFile mainimg){
 		String email = request.getParameter("email1") +"@"+ request.getParameter("email2");
 
 		System.out.println(uv.getUid()+"aaaa");
@@ -241,7 +214,8 @@ public class SignUpController {
 		mapstar.put("SNSurl", sv.getSNSurl());
 		mapstar.put("accountnumber", sv.getAccountnumber());
 		mapstar.put("wage", sv.getWage());
-		
+		mapstar.put("name", sv.getName());
+		ss.makeimageFile(mainimg, sv.getName(), "snsstar\\mainimg\\");
 		snsstarMapper.makesnsstar(mapstar);
 		return "redirect:/";
 	}

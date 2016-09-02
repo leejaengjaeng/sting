@@ -6,8 +6,8 @@
         SELECT * FROM user where id = #{id}
     </select>
     <insert id="makesnsstar" parameterType="hashmap">
-    	insert into snsstar(uid,bankname,favoritem,SNSurl,accountnumber) 
-    	values (#{uid},#{bankname},#{favoritem},#{SNSurl},#{accountnumber})
+    	insert into snsstar(uid,bankname,favoritem,SNSurl,accountnumber,name) 
+    	values (#{uid},#{bankname},#{favoritem},#{SNSurl},#{accountnumber},#{name})
     </insert>
     
 </mapper>
