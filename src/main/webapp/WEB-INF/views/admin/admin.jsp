@@ -4,8 +4,9 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <meta name="viewport" content="width=device-width">
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
+
 <style>
     *{box-sizing: border-box;}
 #black_wrap{
@@ -138,7 +139,7 @@
 			case "Menu_qna" :
 				alert("aa");
 				$('#adminContent').append(qnaContent);
-				getQnaContent("/adminMenu/QnaList");
+				getQnaContent(menuUrl);
 				break;
 			default:
 				alert('너는 뭐니 ' + menuSelector)
@@ -297,12 +298,12 @@ function sendmail(){
 	var qcontent=document.getElementById("recontent").value;
 	var quid=document.getElementById("reuid").value;
 	
-	
 	var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
 	var csrfToken = $("meta[name='_csrf']").attr("content"); 
 	var csrfHeader = $("meta[name='_csrf_header']").attr("content");  // THIS WAS ADDED
 	var data={};
 	var headers={};
+	
 	
 	data[csrfParameter] = csrfToken;
 	data["title"] = qtitle;

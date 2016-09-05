@@ -30,13 +30,12 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception
 	{
 		http
-			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/signupinput","/checkid").permitAll()
 			.antMatchers("/**","/signupinput","/checkid").permitAll()
 			.antMatchers("/**","/signup/signupinputstar","/checkid","/sendmail").permitAll()
 			.antMatchers("/**","/signup/snsstarSignup","/checkid").permitAll()
-			.antMatchers("/admin","/sendmail").hasRole("ADMIN")
+			.antMatchers("/admin","/adminMenu/**").hasRole("ADMIN")
 			.and()
 			.formLogin()
 				.loginPage("/login").permitAll() 
