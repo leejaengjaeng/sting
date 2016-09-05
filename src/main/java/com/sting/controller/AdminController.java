@@ -1,15 +1,24 @@
 package com.sting.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -41,6 +50,10 @@ public class AdminController {
 	QnaDao Qnamapper;
 	@Autowired
 	HttpSession session;
+	@Autowired ServletContext sc;
+
+
+	
 	
 	@RequestMapping(value="/adminMenu/Menu_req",method=RequestMethod.GET)
 	@ResponseBody
@@ -66,6 +79,11 @@ public class AdminController {
 		return "qna/question";
 		
 	}
+	@RequestMapping("/reponsequestion")
+	public String responsequestion(Model model){
+		return "qna/answer";
+		
+	}
 	@RequestMapping(value="/adminMenu/QnaList",method=RequestMethod.GET)
 	@ResponseBody
 	public List<QnaVo> QnaList(){
@@ -89,7 +107,43 @@ public class AdminController {
 		Qnamapper.makequestion(map);
 		return "redirect:/";
 	}
+	@RequestMapping(value="/sendmail", method=RequestMethod.POST)
+	@ResponseBody
+	 public Object sendmail4(@RequestParam("title")String title,@RequestParam("content")String content 
+	   ,@RequestParam("uid")String uid) throws IOException, EmailException{
+	 
+	  
+	  System.out.println(title);
+	  SimpleEmail email = new SimpleEmail();
+
+	  email.setCharset("euc-kr"); // 한글 인코딩 
+	  email.setHostName("smtp.worksmobile.com"); //SMTP서버 설정
+	  email.setSmtpPort(587);  //포트번호
+	  email.setAuthentication("starpic@starpic.kr", "dkdleldj1"); //메일인증  
+	  email.setSSL(true);   //모르겠음
+	  email.setTLS(true);
+	  email.setMsg("aaaaaaa"); // 메일 제목
+	  email.setDebug(true);
+	  email.setContent(content, "text/plain; charset=euc-kr");
+	  email.setSubject(title);
 	
+	  try {
+		  
+	   email.setFrom("starpic@starpic.kr");
+	   email.addTo("wooyoomisutgaru@gmail.com"); // 수신자 추가
+	   email.addTo("10_hall@naver.com");
+	   email.send();
+	   System.out.println("-------------------------------------");
+	  } catch (EmailException e) {
+	   
+	   e.printStackTrace();
+	   System.out.println("에러");
+	   return "FAIL";
+	  }
+	   System.out.println("-----------굿굿굿굿굿ㄱ수-----------");
+
+	  return "OK";
+	 }
 	
 
 }
