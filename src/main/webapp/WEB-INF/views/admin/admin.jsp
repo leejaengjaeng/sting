@@ -137,9 +137,9 @@
 				//getReqContent("/adminMenu/reqList");
 				break;
 			case "Menu_qna" :
-				alert("aa");
+				alert(menuUrl);
 				$('#adminContent').append(qnaContent);
-				getQnaContent(menuUrl);
+				getQnaContent('/adminMenu/QnaList');
 				break;
 			default:
 				alert('너는 뭐니 ' + menuSelector)
@@ -218,9 +218,9 @@
 				{
 					appendCode = appendCode + 
 					"<li class='qnaItem'><input type='hidden' value='"+result[qna].uid+"'/>"+result[qna].title+
-					"| "+result[qna].id+"|"+result[qna].content+"<button onclick='answer("+result[qna].uid+","+result[qna].title+","+result[qna].content+");'> 응답 </button></li><br>";
-					
+					"| "+result[qna].id+"|"+result[qna].content+"<button onclick='answer(\""+result[qna].uid+"\",\""+result[qna].title+"\",\""+result[qna].content+"\");'> 응답 </button></li><br>";
 				}
+				alert(appendCode);
 				$('#adminQnaList').empty();
 				$('#adminQnaList').append(appendCode);
 				
@@ -229,7 +229,7 @@
 			{
 				alert(error);
 			}
-		})
+		});
 	}
 	
 </script>
@@ -331,6 +331,8 @@ function sendmail(){
 	
 }
 function answer(uid,qtitle1,qcontents1){
+	console.log(qtitle1);
+	console.log(qcontents1);
 	var qtitle=document.getElementById("qtitle");
 	qtitle.value=qtitle1;
 	var qcontent=document.getElementById("qcontents");
