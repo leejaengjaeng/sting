@@ -10,7 +10,7 @@ function gotoagree(){
 	location.href="/signup/agree"
 }
 </script>
-<div id="header" class="row">
+<div id="header">
 
 	<sec:authorize access="isAnonymous()">
 		<img class="img-responsive" src="/resources/imgs/logo.png">
