@@ -306,21 +306,25 @@ function sendmail(){
 	
 	data[csrfParameter] = csrfToken;
 	data["title"] = qtitle;
+	data["content"]=qcontent;
+	data["uid"]=quid;
 	headers[csrfHeader] = csrfToken; 
 	
 	$.ajax({
 		url : "/sendmail",
 		type:"POST",
 		data:data,
-		dataType:"json",
 		header:headers,
 		success:function(result)
 		{
 			alert("ok");
+			$("#layer_pop").fadeOut();
+			$("#black_wrap").fadeOut();
 		},
 		error:function(error)
 		{
-			alert("error");
+			console.log(error);
+			alert("error:"+error);
 		}
 	})
 	
@@ -334,8 +338,6 @@ function answer(uid,qtitle1,qcontents1){
 	quid.value=uid;
 	   $("#black_wrap").fadeIn(); 
 	   $("#layer_pop").fadeIn();
-	    
-	    
 }
 $("#black_wrap").click(function(){
     $("#layer_pop").fadeOut();

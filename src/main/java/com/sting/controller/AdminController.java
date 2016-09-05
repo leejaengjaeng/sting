@@ -109,8 +109,8 @@ public class AdminController {
 	}
 	@RequestMapping(value="/sendmail", method=RequestMethod.POST)
 	@ResponseBody
-	 public Object sendmail4(@RequestParam("title")String title
-	   ) throws IOException, EmailException{
+	 public Object sendmail4(@RequestParam("title")String title,@RequestParam("content")String content 
+	   ,@RequestParam("uid")String uid) throws IOException, EmailException{
 	 
 	  
 	  System.out.println(title);
@@ -124,8 +124,8 @@ public class AdminController {
 	  email.setTLS(true);
 	  email.setMsg("aaaaaaa"); // 메일 제목
 	  email.setDebug(true);
-	  email.setContent("simple 메일 naverTest입니다", "text/plain; charset=euc-kr");
-	  email.setSubject("TestMail");
+	  email.setContent(content, "text/plain; charset=euc-kr");
+	  email.setSubject(title);
 	
 	  try {
 		  
@@ -133,13 +133,15 @@ public class AdminController {
 	   email.addTo("wooyoomisutgaru@gmail.com"); // 수신자 추가
 	   email.addTo("10_hall@naver.com");
 	   email.send();
-	   
+	   System.out.println("-------------------------------------");
 	  } catch (EmailException e) {
 	   
 	   e.printStackTrace();
 	   System.out.println("에러");
 	   return "FAIL";
 	  }
+	   System.out.println("-----------굿굿굿굿굿ㄱ수-----------");
+
 	  return "OK";
 	 }
 	
