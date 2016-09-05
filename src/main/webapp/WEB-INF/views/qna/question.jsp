@@ -23,7 +23,7 @@
 		<div id="qa_inp">
 			<input type="text" name="title" id="title" placeholder="Title" style="padding-left: 10px;">
 			<textarea name="content" id="content" style="resize:none; wrap:hard; padding: 10px;"></textarea>
-			<span>문의사항은 회원가입 시 입력하신 메일로 답변이 전달됩니다.</span>
+			<span>문의사항은 회원가입 시 입력하신 메일로 답변이 전달됩니다. ㅎㅎ</span>
 			<div id="btn_box">
 				<button>전송</button>
 				</form>
