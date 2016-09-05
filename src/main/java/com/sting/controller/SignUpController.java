@@ -99,7 +99,7 @@ public class SignUpController {
 		map.put("addr1", request.getParameter("addr1"));
 		map.put("addr2", request.getParameter("addr2"));
 		map.put("addr3", request.getParameter("addr3"));
-		map.put("role", "1");
+		map.put("role", "0");
 		userMapper.makeuser(map);
 
 		UserVo Uid = userMapper.getUserById(uv.getId());
@@ -168,7 +168,7 @@ public class SignUpController {
 		map.put("phonenumber", uv.getPhone());
 		map.put("password", uv.getPassword());
 		map.put("email", email);
-		map.put("role", "1");
+		map.put("role", "2");
 		userMapper.makeuser(map);
 
 		UserVo Uid = userMapper.getUserById(uv.getId());
@@ -200,7 +200,7 @@ public class SignUpController {
 		map.put("phonenumber", uv.getPhone());
 		map.put("password", uv.getPassword());
 		map.put("email", email);
-		map.put("role", "1");
+		map.put("role", "3");
 		userMapper.makeuser(map);
 
 		UserVo Uid = userMapper.getUserById(uv.getId());

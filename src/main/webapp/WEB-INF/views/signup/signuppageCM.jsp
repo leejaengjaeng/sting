@@ -27,7 +27,7 @@
 		</c:import>
 	</div>
 	<div class="form_table">
-		<span>기업회원</span>
+		<span>회원가입</span>
 		<form action=${url } name="signupform" method="POST"
 			enctype="multipart/form-data" onsubmit="return execute();">
 			<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
@@ -130,9 +130,9 @@
 					<td style="height: 40px;">핸드폰</td>
 					<td style="vertical-align: middle; padding-right: 15px;"> : </td>
 					<td colspan="2">
-						<input type="text" name="" id="" required class="slice_txt" > -
-						<input type="text" name="" id="" required class="slice_txt" > -
-						<input type="text" name="" id="" required class="slice_txt" >
+						<input type="text" name="" id="" required class="slice_txt" placeholder="필수항목" > -
+						<input type="text" name="" id="" required class="slice_txt" placeholder="필수항목"> -
+						<input type="text" name="" id="" required class="slice_txt" placeholder="필수항목">
 					</td>					
 				</tr>
 				<tr>
@@ -157,17 +157,17 @@
 				<tr>
 					<td style="height: 40px;">은행</td>
 					<td style="vertical-align: middle; padding-right: 15px;"> : </td>
-					<td colspan="2"><input type="text" name="" id="" required class="inp_txt"  style="width: 100%;"></td>					
+					<td colspan="2"><input type="text" name="" id="" class="inp_txt"  style="width: 100%;"></td>					
 				</tr>
 				<tr>
 					<td style="height: 40px;">계좌번호</td>
 					<td style="vertical-align: middle; padding-right: 15px;"> : </td>
-					<td colspan="2"><input type="text" name="" id="" required  class="inp_txt" style="width: 100%;"></td>					
+					<td colspan="2"><input type="text" name="" id="" class="inp_txt" style="width: 100%;"></td>					
 				</tr>
 				<tr>
 					<td style="height: 40px;">회사소개</td>
 					<td style="vertical-align: middle; padding-right: 15px;"> : </td>
-					<td colspan="2"><input type="text" name="" id="" required  class="inp_txt" style="width: 100%;"></td>					
+					<td colspan="2"><input type="text" name="" id="" class="inp_txt" style="width: 100%;"></td>					
 				</tr>
 				<tr>
 					<td colspan="4"><button id = "ok_btn">가입신청</button></td>

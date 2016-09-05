@@ -134,7 +134,7 @@
 				<tr>
 					<td style="height: 40px;">계좌번호</td>
 					<td style="vertical-align: middle; padding-right: 15px;"> : </td>
-					<td colspan="2"><input type="text" name="" id="" required  class="inp_txt" style="width: 100%;"></td>					
+					<td colspan="2"><input type="text" name="" id="" class="inp_txt" style="width: 100%;"></td>					
 				</tr>				
 				<tr>
 					<td colspan="4"><button id = "ok_btn">가입신청</button></td>
@@ -143,5 +143,8 @@
 			</table>
 		</form>	
 	</div>
+<div style="float: left; width: 100%; margin-top:50px;">
+	<c:import url="../headerAndFooter/footer.jsp"></c:import>
+</div>	
 </body>
 </html>

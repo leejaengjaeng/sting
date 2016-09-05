@@ -21,10 +21,10 @@
 </head>
 <body>
 <div>
-		<c:import url="../headerAndFooter/checkAgreementHeader.jsp">
-			<c:param name="kindOfpage" value="agreement"></c:param>
-		</c:import>
-	</div>
+	<c:import url="../headerAndFooter/checkAgreementHeader.jsp">
+		<c:param name="kindOfpage" value="agreement"></c:param>
+	</c:import>
+</div>
 	<div class="form_table">
 		<span>스타회원</span>
 		<form action=${url} name="signupform" method="POST" enctype="multipart/form-data" onsubmit="return execute();">
@@ -77,9 +77,9 @@
 					<td style="height: 40px;">핸드폰</td>
 					<td style="vertical-align: middle; padding-right: 15px;"> : </td>
 					<td colspan="2">
-						<input type="text" name="" id="" required class="slice_txt" > -
-						<input type="text" name="" id="" required class="slice_txt" > -
-						<input type="text" name="" id="" required class="slice_txt" >
+						<input type="text" name="" id="" required class="slice_txt" placeholder="필수항목"> -
+						<input type="text" name="" id="" required class="slice_txt" placeholder="필수항목"> -
+						<input type="text" name="" id="" required class="slice_txt" placeholder="필수항목">
 					</td>					
 				</tr>
 				<tr>
@@ -109,5 +109,8 @@
 			</table>
 		</form>	
 	</div>
+<div style="float: left; width: 100%; margin-top:50px;">
+	<c:import url="../headerAndFooter/footer.jsp"></c:import>
+</div>	
 </body>
 </html>

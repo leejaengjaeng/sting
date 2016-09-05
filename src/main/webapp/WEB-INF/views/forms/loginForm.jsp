@@ -18,8 +18,9 @@
 			</tr>
 		</form>
 			<tr>
-				<td><button class="log_btn" style="background: #282828;
-        color: #fff;">Join</button></td>				
+				<td>
+				<button class="log_btn" style="background: #282828; color: #fff;">Join</button>
+        		</td>				
 			</tr>
 		</table>
 </div>

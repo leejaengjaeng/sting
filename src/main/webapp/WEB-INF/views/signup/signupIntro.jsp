@@ -47,7 +47,8 @@ function gosignup(kind){
 		<div style="width:1000px; margin-top: 50px; margin-bottom:50px;">
 			<div class="signgroup">
 				<div class="wrap_black">
-					<img src="/resources/imgs/signimg/img3.jpg" style="opacity: 0.5;">
+					<img src="/resources/imgs/signimg/img3.jpg">
+					<div class="txt_back"></div>
 					<div class="txtbox">	
 						<h3>기업 회원</h3>
 						<h4>기업 회원이신분들은 선택해 주세요</h4>
@@ -59,31 +60,34 @@ function gosignup(kind){
 			</div>
 			<div class="signgroup">
 				<div class="wrap_black">
-					<img src="/resources/imgs/signimg/img2.jpg" style="opacity: 0.5;">
+					<img src="/resources/imgs/signimg/img2.jpg" >
+					<div class="txt_back"></div>
 					<div class="txtbox">	
 						<h3>스타 회원</h3>
 						<h4>스타 회원이신분들은 선택해 주세요</h4>
 					</div>
 					<div class="goto">
-						<img src="/resources/imgs/signimg/icon.png" onclick="gosignup('star');">
+						<img src="/resources/imgs/signimg/icon.png"  onclick="gosignup('star');">
 					</div>							
 				</div>
 			</div>
 			<div class="signgroup">
 				<div class="wrap_black">
-					<img src="/resources/imgs/signimg/img1.jpg" style="opacity: 0.5;">
+					<img src="/resources/imgs/signimg/img1.jpg">
+					<div class="txt_back"></div>
 					<div class="txtbox">	
 						<h3>매니지먼트 회원</h3>
 						<h4>매니지먼트 회원신분들은 선택해 주세요</h4>
 					</div>
 					<div class="goto">
-						<img src="/resources/imgs/signimg/icon.png" onclick="gosignup('managemen');">
+						<img src="/resources/imgs/signimg/icon.png" onclick="gosignup('management');">
 					</div>
 				</div>
 			</div>
 			<div class="signgroup">
 				<div class="wrap_black">
-					<img src="/resources/imgs/signimg/img4.jpg" style="opacity: 0.5;">
+					<img src="/resources/imgs/signimg/img4.jpg">
+					<div class="txt_back"></div>
 					<div class="txtbox">	
 						<h3>SNS스타 회원</h3>
 						<h4>SNS스타 회원이신분들은 선택해 주세요</h4>
