@@ -3,8 +3,8 @@
 
 ## 개발 환경
     Spring-Boot
-      Spring security
+        - Spring security
     Gradle
     Mysql 5.7
-      mybatis-spring-boot-starter
+        - mybatis-spring-boot-starter
   
